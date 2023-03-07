@@ -7,6 +7,7 @@
 - Name
 - Email
 - Password
+- isLogged
 
 - Events:
 
