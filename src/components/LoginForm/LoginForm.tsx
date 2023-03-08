@@ -9,10 +9,11 @@ const LoginForm = (): JSX.Element => {
           Email
         </label>
         <input
-          type="text"
+          type="email"
           id="email"
-          placeholder="Introduce your email"
+          placeholder="abc@email.com"
           className="login-form__field"
+          autoComplete="off"
         />
       </div>
       <div className="login-form__section">
@@ -24,13 +25,17 @@ const LoginForm = (): JSX.Element => {
           Password
         </label>
         <input
-          type="text"
+          type="password"
           id="password"
           placeholder="Introduce your password"
           className="login-form__field"
+          autoComplete="off"
         />
       </div>
       <Button text={"Log in"} />
+      <div className="link">
+        Not a member? <a href="sign up">Sign up</a>
+      </div>
     </LoginFormStyled>
   );
 };

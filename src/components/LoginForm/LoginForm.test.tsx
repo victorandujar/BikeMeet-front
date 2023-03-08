@@ -18,7 +18,9 @@ describe("Given a LoginForm component", () => {
 
       render(<LoginForm />);
 
-      const expectedButton = screen.getByRole("button", { name: buttonText });
+      const expectedButton = screen.getByRole("button", {
+        name: buttonText.toUpperCase(),
+      });
 
       expect(expectedButton).toBeInTheDocument();
     });
