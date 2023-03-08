@@ -35,12 +35,15 @@ button{
 :root {
   --main-color-button: #0D23AF;
   --main-color-text: #fff;
+  --secondary-color-text: #000;
+  --third-color-text: #0D23AF;
   --main-font: "Inter", sans-serif;
   --secondary-font: "Montserrat";
 }
 
 a, :visited, :active{
 text-decoration: none;
+color: var(--third-color-text)
 }
 `;
 
