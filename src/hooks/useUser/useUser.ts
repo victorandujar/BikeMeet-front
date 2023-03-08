@@ -11,7 +11,7 @@ interface UseUserStructure {
 const useUser = (): UseUserStructure => {
   const dispatch = useAppDispatch();
 
-  const apiUrl = process.env.REACT_APP_URL_API;
+  const apiUrl = process.env.REACT_APP_URL_API!;
   const usersEndPoint = "/users";
   const loginEndPoint = "/login";
 
