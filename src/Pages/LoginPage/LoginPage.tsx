@@ -1,3 +1,4 @@
+import { ToastContainer } from "react-toastify";
 import LoginForm from "../../components/LoginForm/LoginForm";
 import LoginPageStyled from "./LoginPageStyled";
 
@@ -9,6 +10,7 @@ const LoginPage = (): JSX.Element => {
         <h1 className="login-page__title">Log in</h1>
       </div>
       <LoginForm />
+      <ToastContainer hideProgressBar />
     </LoginPageStyled>
   );
 };
