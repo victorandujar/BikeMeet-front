@@ -1,4 +1,11 @@
 import HeaderStyled from "./HeaderStyled";
+import {
+  faHouseChimney,
+  faRectangleList,
+  faPlus,
+  faRightFromBracket,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Header = (): JSX.Element => {
   return (
@@ -14,10 +21,13 @@ const Header = (): JSX.Element => {
         <h2 className="logo__title">BIKEMEET</h2>
       </div>
       <nav className="main-header__navigation">
-        <i className="fa-solid fa-house-chimney fa-solid--active"></i>
-        <i className="fa-solid fa-rectangle-list fa-solid--active"></i>
-        <i className="fa-solid fa-plus fa-solid--active"></i>
-        <i className="fa-solid fa-right-from-bracket fa-solid--active"></i>
+        <FontAwesomeIcon icon={faHouseChimney} className="fa-solid--active" />
+        <FontAwesomeIcon icon={faRectangleList} className="fa-solid--active" />
+        <FontAwesomeIcon icon={faPlus} className="fa-solid--active" />
+        <FontAwesomeIcon
+          icon={faRightFromBracket}
+          className="fa-solid--active"
+        />
       </nav>
     </HeaderStyled>
   );

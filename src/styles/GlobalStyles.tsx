@@ -9,7 +9,7 @@ const GlobalStyles = createGlobalStyle`
 body {
   padding: 20px;
   background-color: #fff;
-  font-family: var(--main-font);
+  font-family: ${(props) => props.theme.fonts.primary};
   min-height: 100vh;
 }
 
@@ -32,18 +32,9 @@ button{
   font-family: inherit;
 }
 
-:root {
-  --main-color-button: #0D23AF;
-  --main-color-text: #fff;
-  --secondary-color-text: #000;
-  --third-color-text: #0D23AF;
-  --main-font: "Inter", sans-serif;
-  --secondary-font: "Montserrat";
-}
-
 a, :visited, :active{
 text-decoration: none;
-color: var(--third-color-text)
+color: ${(props) => props.theme.colors.thirdColorText}
 }
 `;
 

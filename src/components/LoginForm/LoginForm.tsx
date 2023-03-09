@@ -62,7 +62,7 @@ const LoginForm = (): JSX.Element => {
       </div>
       <Button text={"Log in"} />
       <div className="link">
-        Not a member? <a href="sign up">Sign up</a>
+        Not a member? <a href="sign-up">Sign up</a>
       </div>
     </LoginFormStyled>
   );

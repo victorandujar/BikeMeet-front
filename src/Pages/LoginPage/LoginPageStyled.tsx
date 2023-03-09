@@ -12,16 +12,21 @@ const LoginPageStyled = styled.div`
     align-items: center;
 
     &__title {
-      font-family: var(--secondary-font);
+      font-family: ${(props) => props.theme.fonts.secondary};
       font-size: 1.5rem;
     }
   }
+
+  .svg-inline--fa {
+    height: 1.5em;
+  }
+
   .fa-solid {
     font-size: 1.2rem;
-    color: var(--secondary-color-text);
+    color: ${(props) => props.theme.colors.secondaryColorText};
 
     &--active:hover {
-      color: var(--third-color-text);
+      color: ${(props) => props.theme.colors.thirdColorText};
     }
   }
 `;
