@@ -3,6 +3,8 @@ import renderWithProviders from "../../testUtil";
 import LoginForm from "./LoginForm";
 import userEvent from "@testing-library/user-event";
 import { UserCredentials } from "../../hooks/useUser/types";
+import { ThemeProvider } from "styled-components";
+import theme from "../../styles/Theme";
 
 const mockLoginUser = jest.fn();
 
@@ -15,7 +17,11 @@ describe("Given a LoginForm component", () => {
     test("Then it should show a label with the text 'Password'", () => {
       const labelText = "Password";
 
-      renderWithProviders(<LoginForm />);
+      renderWithProviders(
+        <ThemeProvider theme={theme}>
+          <LoginForm />
+        </ThemeProvider>
+      );
 
       const expectedLabel = screen.getByLabelText(labelText);
 
@@ -25,10 +31,14 @@ describe("Given a LoginForm component", () => {
     test("Then it should show a button with the text 'Log in'", () => {
       const buttonText = "Log in";
 
-      renderWithProviders(<LoginForm />);
+      renderWithProviders(
+        <ThemeProvider theme={theme}>
+          <LoginForm />
+        </ThemeProvider>
+      );
 
       const expectedButton = screen.getByRole("button", {
-        name: buttonText.toUpperCase(),
+        name: buttonText,
       });
 
       expect(expectedButton).toBeInTheDocument();
@@ -37,7 +47,11 @@ describe("Given a LoginForm component", () => {
     test("Then it should show a label with the text 'Email'", () => {
       const labelText = "Email";
 
-      renderWithProviders(<LoginForm />);
+      renderWithProviders(
+        <ThemeProvider theme={theme}>
+          <LoginForm />
+        </ThemeProvider>
+      );
 
       const expectedLabel = screen.getByLabelText(labelText);
 
@@ -50,7 +64,11 @@ describe("Given a LoginForm component", () => {
       const emailLabel = "Email";
       const emailText = "jordi@gmail.com";
 
-      renderWithProviders(<LoginForm />);
+      renderWithProviders(
+        <ThemeProvider theme={theme}>
+          <LoginForm />
+        </ThemeProvider>
+      );
 
       const emailInput = screen.getByLabelText(emailLabel);
 
@@ -65,7 +83,11 @@ describe("Given a LoginForm component", () => {
       const passwordLabel = "Password";
       const passwordText = "12345678";
 
-      renderWithProviders(<LoginForm />);
+      renderWithProviders(
+        <ThemeProvider theme={theme}>
+          <LoginForm />
+        </ThemeProvider>
+      );
 
       const passwordInput = screen.getByLabelText(passwordLabel);
 
@@ -84,7 +106,11 @@ describe("Given a LoginForm component", () => {
         password: "",
       };
 
-      renderWithProviders(<LoginForm />);
+      renderWithProviders(
+        <ThemeProvider theme={theme}>
+          <LoginForm />
+        </ThemeProvider>
+      );
 
       const emailInput = screen.getByPlaceholderText(emailText);
       const passwordInput = screen.getByPlaceholderText(passwordText);
