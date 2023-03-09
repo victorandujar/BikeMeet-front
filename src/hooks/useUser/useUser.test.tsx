@@ -50,5 +50,17 @@ describe("Given a useUser custom hook", () => {
 
       expect(spy).toHaveBeenCalledWith(loginUserActionCreator(mockLoginUser));
     });
+
+    test("Then it should call the showErrorToast function", async () => {
+      const {
+        result: {
+          current: { loginUser },
+        },
+      } = renderHook(() => useUser(), { wrapper: Wrapper });
+
+      await loginUser(userCredentials);
+
+      expect(spy).not.toBeCalled();
+    });
   });
 });
