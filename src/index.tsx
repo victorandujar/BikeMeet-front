@@ -4,8 +4,9 @@ import { Provider } from "react-redux";
 import { store } from "./store/store";
 import App from "./App";
 import "@fontsource/inter";
-import GlobalStyles from "./styles/GlobalStyles";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import "@fontsource/montserrat";
+import GlobalStyles from "./styles/GlobalStyles";
 
 const container = document.getElementById("root")!;
 const root = createRoot(container);
