@@ -5,7 +5,7 @@ interface ButtonProps {
 }
 
 const Button = ({ text }: ButtonProps): JSX.Element => {
-  return <ButtonStyled>{text.toUpperCase()}</ButtonStyled>;
+  return <ButtonStyled>{text}</ButtonStyled>;
 };
 
 export default Button;

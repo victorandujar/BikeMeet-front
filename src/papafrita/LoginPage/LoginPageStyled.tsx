@@ -16,6 +16,11 @@ const LoginPageStyled = styled.div`
       font-size: 1.5rem;
     }
   }
+
+  .svg-inline--fa {
+    height: 1.5em;
+  }
+
   .fa-solid {
     font-size: 1.2rem;
     color: var(--secondary-color-text);

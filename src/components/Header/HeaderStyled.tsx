@@ -26,8 +26,11 @@ const HeaderStyled = styled.header`
     }
   }
 
+  .svg-inline--fa {
+    height: 1.5em;
+  }
+
   .fa-solid {
-    font-size: 1.5rem;
     color: var(--secondary-color-text);
 
     &--active:hover {
