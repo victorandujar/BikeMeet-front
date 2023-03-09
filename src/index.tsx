@@ -5,6 +5,7 @@ import { store } from "./store/store";
 import App from "./App";
 import "@fontsource/inter";
 import GlobalStyles from "./styles/GlobalStyles";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 const container = document.getElementById("root")!;
 const root = createRoot(container);
