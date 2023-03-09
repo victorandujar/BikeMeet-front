@@ -12,6 +12,7 @@ const LoginPageStyled = styled.div`
     align-items: center;
 
     &__title {
+      font-family: var(--secondary-font);
       font-size: 1.5rem;
     }
   }
