@@ -3,6 +3,7 @@ import { CustomTokenPayload, LoginResponse, UserCredentials } from "./types";
 import decodeToken from "jwt-decode";
 import { User } from "../../types/types";
 import { loginUserActionCreator } from "../../store/features/usersSlice/usersSlice";
+import { showErrorToast } from "../../modals/modals";
 
 interface UseUserStructure {
   loginUser: (userCredentials: UserCredentials) => Promise<void>;
@@ -37,7 +38,9 @@ const useUser = (): UseUserStructure => {
       dispatch(loginUserActionCreator(userLogin));
 
       localStorage.setItem("token", token);
-    } catch (error) {}
+    } catch {
+      showErrorToast("Invalid credentials");
+    }
   };
 
   return { loginUser };
