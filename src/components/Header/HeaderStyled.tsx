@@ -12,10 +12,11 @@ const HeaderStyled = styled.header`
     gap: 5px;
 
     &__title {
+      font-family: ${(props) => props.theme.fonts.primary};
       font-weight: 900;
       font-style: italic;
       font-size: 1rem;
-      color: var(--third-color-text);
+      color: ${(props) => props.theme.colors.thirdColorText};
     }
   }
 
@@ -31,10 +32,10 @@ const HeaderStyled = styled.header`
   }
 
   .fa-solid {
-    color: var(--secondary-color-text);
+    color: ${(props) => props.theme.colors.secondaryColorText};
 
     &--active:hover {
-      color: var(--third-color-text);
+      color: ${(props) => props.theme.colors.thirdColorText};
     }
   }
 `;
