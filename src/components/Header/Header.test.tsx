@@ -1,7 +1,7 @@
 import { screen } from "@testing-library/react";
 import { ThemeProvider } from "styled-components";
 import theme from "../../styles/Theme";
-import renderWithProviders from "../../testUtil";
+import renderWithProviders from "../../testUtils/renderWithProviders";
 import Header from "./Header";
 
 describe("Given a Header component", () => {

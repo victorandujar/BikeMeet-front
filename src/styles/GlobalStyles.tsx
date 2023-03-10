@@ -9,7 +9,7 @@ const GlobalStyles = createGlobalStyle`
 body {
   padding: 20px;
   background-color: #fff;
-  font-family: ${(props) => props.theme.fonts.primary};
+  font-family: "Inter";
   min-height: 100vh;
 }
 
@@ -34,7 +34,7 @@ button{
 
 a, :visited, :active{
 text-decoration: none;
-color: ${(props) => props.theme.colors.thirdColorText}
+color: #0D23AF
 }
 `;
 

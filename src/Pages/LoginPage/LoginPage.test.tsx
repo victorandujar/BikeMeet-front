@@ -2,7 +2,7 @@ import { screen } from "@testing-library/react";
 import { ThemeProvider } from "styled-components";
 import GlobalStyles from "../../styles/GlobalStyles";
 import theme from "../../styles/Theme";
-import renderWithProviders from "../../testUtil";
+import renderWithProviders from "../../testUtils/renderWithProviders";
 import LoginPage from "./LoginPage";
 
 describe("Given a Login page", () => {
