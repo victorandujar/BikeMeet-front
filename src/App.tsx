@@ -1,13 +1,7 @@
 import Layout from "./components/Layout/Layout";
-import LoginPage from "./Pages/LoginPage/LoginPage";
 
 const App = () => {
-  return (
-    <>
-      <Layout />
-      <LoginPage />
-    </>
-  );
+  return <Layout />;
 };
 
 export default App;

@@ -1,5 +1,5 @@
 import { act, fireEvent, screen } from "@testing-library/react";
-import renderWithProviders from "../../testUtil";
+import renderWithProviders from "../../testUtils/renderWithProviders";
 import LoginForm from "./LoginForm";
 import userEvent from "@testing-library/user-event";
 import { UserCredentials } from "../../hooks/useUser/types";
