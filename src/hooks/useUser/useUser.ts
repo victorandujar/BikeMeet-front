@@ -1,12 +1,18 @@
 import { useAppDispatch } from "../../store/hooks";
-import { CustomTokenPayload, LoginResponse, UserCredentials } from "./types";
+import {
+  CustomTokenPayload,
+  LoginResponse,
+  UserCredentials,
+  UserRegisterData,
+} from "./types";
 import decodeToken from "jwt-decode";
 import { User } from "../../types/types";
 import { loginUserActionCreator } from "../../store/features/usersSlice/usersSlice";
-import { showErrorToast } from "../../modals/modals";
+import { showErrorToast, showSuccessToast } from "../../modals/modals";
 
 interface UseUserStructure {
   loginUser: (userCredentials: UserCredentials) => Promise<void>;
+  registerUser: (registerUserData: UserRegisterData) => Promise<void>;
 }
 
 const useUser = (): UseUserStructure => {
@@ -15,6 +21,7 @@ const useUser = (): UseUserStructure => {
   const apiUrl = process.env.REACT_APP_URL_API!;
   const usersEndPoint = "/users";
   const loginEndPoint = "/login";
+  const registerEndPoint = "/register";
 
   const loginUser = async (userCredentials: UserCredentials) => {
     try {
@@ -43,7 +50,21 @@ const useUser = (): UseUserStructure => {
     }
   };
 
-  return { loginUser };
+  const registerUser = async (registerUserData: UserRegisterData) => {
+    try {
+      await fetch(`${apiUrl}${usersEndPoint}${registerEndPoint}`, {
+        method: "POST",
+        body: JSON.stringify(registerUserData),
+        headers: { "Content-Type": "application/json" },
+      });
+
+      showSuccessToast("Your account has been created");
+    } catch {
+      showErrorToast("Something went wrong. Try again!");
+    }
+  };
+
+  return { loginUser, registerUser };
 };
 
 export default useUser;
