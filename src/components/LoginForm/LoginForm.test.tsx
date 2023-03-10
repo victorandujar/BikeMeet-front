@@ -1,4 +1,4 @@
-import { act, fireEvent, screen } from "@testing-library/react";
+import { act, screen } from "@testing-library/react";
 import LoginForm from "./LoginForm";
 import userEvent from "@testing-library/user-event";
 import { UserCredentials } from "../../hooks/useUser/types";
@@ -77,22 +77,35 @@ describe("Given a LoginForm component", () => {
 
   describe("When the user submits the form", () => {
     test("The loginUser function should be called", async () => {
-      const emailText = "abc@email.com";
-      const passwordText = "Introduce your password";
+      const emailInputPlaceholderText = "abc@email.com";
+      const passwordInputPlaceholderText = "Introduce your password";
+
       const mockUser: UserCredentials = {
-        email: "",
-        password: "",
+        email: "victor@gmail.com",
+        password: "12345678",
       };
 
       renderWithProviders(<LoginForm />);
 
-      const emailInput = screen.getByPlaceholderText(emailText);
-      const passwordInput = screen.getByPlaceholderText(passwordText);
+      const emailInputPlaceholder = screen.getByPlaceholderText(
+        emailInputPlaceholderText
+      );
+
+      const passwordInputPlaceholder = screen.getByPlaceholderText(
+        passwordInputPlaceholderText
+      );
+
       const submitButton = screen.getByRole("button");
 
-      fireEvent.change(emailInput, mockUser.email);
-      fireEvent.change(passwordInput, mockUser.password);
-      fireEvent.click(submitButton);
+      await act(
+        async () => await userEvent.type(emailInputPlaceholder, mockUser.email)
+      );
+
+      await act(
+        async () =>
+          await userEvent.type(passwordInputPlaceholder, mockUser.password)
+      );
+      await act(async () => await userEvent.click(submitButton));
 
       expect(mockLoginUser).toHaveBeenCalledWith(mockUser);
     });
