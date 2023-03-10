@@ -14,19 +14,7 @@ const LoginPageStyled = styled.div`
     &__title {
       font-family: ${(props) => props.theme.fonts.secondary};
       font-size: 1.5rem;
-    }
-  }
-
-  .svg-inline--fa {
-    height: 1.5em;
-  }
-
-  .fa-solid {
-    font-size: 1.2rem;
-    color: ${(props) => props.theme.colors.secondaryColorText};
-
-    &--active:hover {
-      color: ${(props) => props.theme.colors.thirdColorText};
+      width: 100%;
     }
   }
 `;

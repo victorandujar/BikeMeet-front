@@ -5,6 +5,7 @@ const LoginFormStyled = styled.form`
   flex-direction: column;
   gap: 44px;
   align-items: center;
+  width: 100%;
 
   .login-form {
     &__section {
@@ -14,8 +15,9 @@ const LoginFormStyled = styled.form`
     }
 
     &__field {
+      font-family: inherit;
       height: 3.5rem;
-      width: 18.75rem;
+      width: 18.125rem;
       border: 1px solid #000;
       border-radius: 12px;
       padding: 0 14px;

@@ -2,9 +2,12 @@ import styled from "styled-components";
 
 const HeaderStyled = styled.header`
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
+  align-items: flex-start;
   justify-content: space-between;
   padding: 0 0 60px 0;
+  min-width: 100%;
+  gap: 20px;
 
   .logo {
     display: flex;
@@ -23,7 +26,8 @@ const HeaderStyled = styled.header`
   .main-header {
     &__navigation {
       display: flex;
-      gap: 15px;
+      flex-direction: row;
+      gap: 60px;
     }
   }
 
