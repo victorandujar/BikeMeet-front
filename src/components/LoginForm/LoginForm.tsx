@@ -27,6 +27,8 @@ const LoginForm = (): JSX.Element => {
     await loginUser({ email, password });
   };
 
+  const areFieldsEmpty = email === "" || password === "";
+
   return (
     <LoginFormStyled className="login-form" onSubmit={onSubmitHandler}>
       <div className="login-form__section">
@@ -60,7 +62,7 @@ const LoginForm = (): JSX.Element => {
           onChange={handlePassword}
         />
       </div>
-      <Button text={"Log in"} />
+      <Button text={"Log in"} isDisabled={areFieldsEmpty} />
       <div className="link">
         Not a member? <a href="sign-up">Sign up</a>
       </div>

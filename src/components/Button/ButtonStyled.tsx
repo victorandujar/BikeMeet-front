@@ -9,6 +9,12 @@ const ButtonStyled = styled.button`
   text-transform: uppercase;
   border: none;
   border-radius: 12px;
+
+  :disabled {
+    :disabled {
+      opacity: 70%;
+    }
+  }
 `;
 
 export default ButtonStyled;

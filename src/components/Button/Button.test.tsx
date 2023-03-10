@@ -7,7 +7,9 @@ describe("Given a Button component", () => {
     test("Then it should show a button with the text 'Log in'", () => {
       const buttonText = "Log in";
 
-      renderWithProviders(<Button text={buttonText.toUpperCase()} />);
+      renderWithProviders(
+        <Button text={buttonText.toUpperCase()} isDisabled />
+      );
 
       const expectedButton = screen.getByRole("button", {
         name: buttonText.toUpperCase(),
