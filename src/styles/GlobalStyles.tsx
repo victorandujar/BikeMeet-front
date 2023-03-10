@@ -7,7 +7,7 @@ const GlobalStyles = createGlobalStyle`
 }
 
 body {
-  padding: 20px;
+  padding: 10px;
   background-color: #fff;
   font-family: "Inter";
   min-height: 100vh;
