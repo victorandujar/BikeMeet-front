@@ -1,4 +1,3 @@
-import { ToastContainer } from "react-toastify";
 import LoginForm from "../../components/LoginForm/LoginForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
@@ -18,7 +17,6 @@ const LoginPage = (): JSX.Element => {
         <h1 className="login-page__title">Log in</h1>
       </header>
       <LoginForm />
-      <ToastContainer hideProgressBar />
     </LoginPageStyled>
   );
 };

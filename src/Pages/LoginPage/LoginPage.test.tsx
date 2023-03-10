@@ -1,8 +1,5 @@
 import { screen } from "@testing-library/react";
-import { ThemeProvider } from "styled-components";
-import GlobalStyles from "../../styles/GlobalStyles";
-import theme from "../../styles/Theme";
-import renderWithProviders from "../../testUtils/renderWithProviders";
+import { renderWithProviders } from "../../testUtils/renderWithProviders";
 import LoginPage from "./LoginPage";
 
 describe("Given a Login page", () => {
@@ -10,11 +7,7 @@ describe("Given a Login page", () => {
     test("Then it should show a heading with the text 'Log in'", () => {
       const headingText = "Log in";
 
-      renderWithProviders(
-        <ThemeProvider theme={theme}>
-          <LoginPage />
-        </ThemeProvider>
-      );
+      renderWithProviders(<LoginPage />);
 
       const expectedHeading = screen.getByRole("heading", {
         name: headingText,
@@ -26,12 +19,7 @@ describe("Given a Login page", () => {
     test("Then it should show a button with the text 'LOG IN'", () => {
       const buttonText = "Log in";
 
-      renderWithProviders(
-        <ThemeProvider theme={theme}>
-          <GlobalStyles />
-          <LoginPage />
-        </ThemeProvider>
-      );
+      renderWithProviders(<LoginPage />);
 
       const expectedButton = screen.getByRole("button", {
         name: buttonText,
