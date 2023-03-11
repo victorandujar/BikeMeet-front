@@ -7,7 +7,7 @@ const HeaderStyled = styled.header`
   justify-content: space-between;
   padding: 0 0 60px 0;
   min-width: 100%;
-  gap: 20px;
+  gap: 40px;
 
   .logo {
     display: flex;
