@@ -3,6 +3,7 @@ import LoginPage from "../Pages/LoginPage/LoginPage";
 import endpoints from "./types";
 import { createBrowserRouter, RouteObject } from "react-router-dom";
 import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
+import RegisterPage from "../Pages/RegisterPage/RegisterPage";
 
 const routes: RouteObject[] = [
   {
@@ -11,6 +12,7 @@ const routes: RouteObject[] = [
     children: [
       { path: "/", element: <ProtectedRoute element={<App />} /> },
       { path: endpoints.login, element: <LoginPage /> },
+      { path: endpoints.register, element: <RegisterPage /> },
     ],
   },
 ];
