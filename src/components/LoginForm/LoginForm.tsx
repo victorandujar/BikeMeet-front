@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import useUser from "../../hooks/useUser/useUser";
 import Button from "../Button/Button";
 import LoginFormStyled from "./LoginFormStyled";
@@ -64,7 +65,7 @@ const LoginForm = (): JSX.Element => {
       </div>
       <Button text={"Log in"} isDisabled={areFieldsEmpty} />
       <div className="link">
-        Not a member? <a href="sign-up">Sign up</a>
+        Not a member? <Link to="/sign-up">Sign up</Link>
       </div>
     </LoginFormStyled>
   );

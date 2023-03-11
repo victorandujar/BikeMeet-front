@@ -2,7 +2,7 @@ import { act, screen } from "@testing-library/react";
 import LoginForm from "./LoginForm";
 import userEvent from "@testing-library/user-event";
 import { UserCredentials } from "../../hooks/useUser/types";
-import { renderWithProviders } from "../../testUtils/renderWithProviders";
+import { renderRouterWithProviders } from "../../testUtils/renderWithProviders";
 
 const mockLoginUser = jest.fn();
 
@@ -15,7 +15,7 @@ describe("Given a LoginForm component", () => {
     test("Then it should show a label with the text 'Password'", () => {
       const labelText = "Password";
 
-      renderWithProviders(<LoginForm />);
+      renderRouterWithProviders(<LoginForm />);
 
       const expectedLabel = screen.getByLabelText(labelText);
 
@@ -25,7 +25,7 @@ describe("Given a LoginForm component", () => {
     test("Then it should show a button with the text 'Log in'", () => {
       const buttonText = "Log in";
 
-      renderWithProviders(<LoginForm />);
+      renderRouterWithProviders(<LoginForm />);
 
       const expectedButton = screen.getByRole("button", {
         name: buttonText,
@@ -37,7 +37,7 @@ describe("Given a LoginForm component", () => {
     test("Then it should show a label with the text 'Email'", () => {
       const labelText = "Email";
 
-      renderWithProviders(<LoginForm />);
+      renderRouterWithProviders(<LoginForm />);
 
       const expectedLabel = screen.getByLabelText(labelText);
 
@@ -50,7 +50,7 @@ describe("Given a LoginForm component", () => {
       const emailLabel = "Email";
       const emailText = "jordi@gmail.com";
 
-      renderWithProviders(<LoginForm />);
+      renderRouterWithProviders(<LoginForm />);
 
       const emailInput = screen.getByLabelText(emailLabel);
 
@@ -65,7 +65,7 @@ describe("Given a LoginForm component", () => {
       const passwordLabel = "Password";
       const passwordText = "12345678";
 
-      renderWithProviders(<LoginForm />);
+      renderRouterWithProviders(<LoginForm />);
 
       const passwordInput = screen.getByLabelText(passwordLabel);
 
@@ -85,7 +85,7 @@ describe("Given a LoginForm component", () => {
         password: "12345678",
       };
 
-      renderWithProviders(<LoginForm />);
+      renderRouterWithProviders(<LoginForm />);
 
       const emailInputPlaceholder = screen.getByPlaceholderText(
         emailInputPlaceholderText
