@@ -6,7 +6,7 @@ import {
   UserRegisterData,
 } from "./types";
 import decodeToken from "jwt-decode";
-import { User } from "../../types/types";
+import { User } from "../../types/users/types";
 import { loginUserActionCreator } from "../../store/features/usersSlice/usersSlice";
 import { showErrorToast, showSuccessToast } from "../../modals/modals";
 
