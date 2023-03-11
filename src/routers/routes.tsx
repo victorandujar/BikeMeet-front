@@ -1,4 +1,4 @@
-import App from "../App";
+import App from "../App/App";
 import LoginPage from "../Pages/LoginPage/LoginPage";
 import endpoints from "./types";
 import { createBrowserRouter, RouteObject } from "react-router-dom";
