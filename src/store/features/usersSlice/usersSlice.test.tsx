@@ -1,4 +1,4 @@
-import { User, UserState } from "../../../types/types";
+import { User, UserState } from "../../../types/users/types";
 import { loginUserActionCreator, userReducer } from "./usersSlice";
 
 const initialState: UserState = {
