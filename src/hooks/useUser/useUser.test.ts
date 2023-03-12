@@ -5,7 +5,10 @@ import { CustomTokenPayload, UserCredentials, UserRegisterData } from "./types";
 import useUser from "./useUser";
 import decodeToken from "jwt-decode";
 import { User } from "../../types/users/types";
-import { loginUserActionCreator } from "../../store/features/usersSlice/usersSlice";
+import {
+  loginUserActionCreator,
+  logoutUserActionCreator,
+} from "../../store/features/usersSlice/usersSlice";
 
 jest.mock("jwt-decode", () => jest.fn());
 
@@ -67,6 +70,24 @@ describe("Given a useUser custom hook", () => {
       await loginUser(userCredentials);
 
       expect(spy).not.toBeCalled();
+    });
+  });
+
+  describe("When the logoutUser function is called", () => {
+    test("Then it should call the dispatch", async () => {
+      const {
+        result: {
+          current: { logoutUser },
+        },
+      } = renderHook(() => useUser(), { wrapper: Wrapper });
+
+      (decodeToken as jest.MockedFunction<typeof decodeToken>).mockReturnValue(
+        mockTokenPayload
+      );
+
+      await logoutUser();
+
+      expect(spy).toHaveBeenCalledWith(logoutUserActionCreator());
     });
   });
 
