@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { loadEventsActionCreator } from "../../store/features/eventsSlice/eventsSlice";
 import { useAppDispatch } from "../../store/hooks";
-import { EventsDataStructure } from "../../types/events/types";
+import { EventsData } from "../../types/events/types";
 
 const apiUrl = process.env.REACT_APP_URL_API;
 const pathEvents = "/events";
@@ -19,7 +19,7 @@ const useEvents = () => {
           headers: { "Content-Type": "application/json; charset=UTF-8" },
         }
       );
-      const events = (await response.json()) as EventsDataStructure;
+      const { events } = (await response.json()) as EventsData;
 
       if (!response.ok) {
         return;
