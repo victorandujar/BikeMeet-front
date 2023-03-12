@@ -2,7 +2,7 @@ export interface EventDataStructure {
   name: string;
   distance: number;
   type: string;
-  date: Date;
+  date: Date | string;
   description: string;
   image: string;
 }
