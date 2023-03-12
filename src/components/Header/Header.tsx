@@ -4,7 +4,6 @@ import {
   faRectangleList,
   faPlus,
   faRightFromBracket,
-  faUserPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAppSelector } from "../../store/hooks";
@@ -26,16 +25,24 @@ const Header = (): JSX.Element => {
       </div>
 
       <nav className="main-header__navigation">
-        <FontAwesomeIcon icon={faHouseChimney} className="fa-solid--active" />
-        <FontAwesomeIcon icon={faRectangleList} className="fa-solid--active" />
-        <FontAwesomeIcon icon={faPlus} className="fa-solid--active" />
         {isLogged ? (
-          <FontAwesomeIcon
-            icon={faRightFromBracket}
-            className="fa-solid--active"
-          />
+          <>
+            <FontAwesomeIcon
+              icon={faHouseChimney}
+              className="fa-solid--active"
+            />
+            <FontAwesomeIcon
+              icon={faRectangleList}
+              className="fa-solid--active"
+            />
+            <FontAwesomeIcon icon={faPlus} className="fa-solid--active" />
+            <FontAwesomeIcon
+              icon={faRightFromBracket}
+              className="fa-solid--active"
+            />
+          </>
         ) : (
-          <FontAwesomeIcon icon={faUserPlus} />
+          ""
         )}
       </nav>
     </HeaderStyled>
