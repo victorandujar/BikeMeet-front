@@ -7,9 +7,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAppSelector } from "../../store/hooks";
+import useUser from "../../hooks/useUser/useUser";
 
 const Header = (): JSX.Element => {
   const { isLogged } = useAppSelector((state) => state.user);
+  const { logoutUser } = useUser();
 
   return (
     <HeaderStyled className="main-header">
@@ -39,6 +41,7 @@ const Header = (): JSX.Element => {
             <FontAwesomeIcon
               icon={faRightFromBracket}
               className="fa-solid--active"
+              onClick={logoutUser}
             />
           </>
         ) : (
