@@ -7,16 +7,23 @@ import {
 } from "./types";
 import decodeToken from "jwt-decode";
 import { User } from "../../types/users/types";
-import { loginUserActionCreator } from "../../store/features/usersSlice/usersSlice";
+import {
+  loginUserActionCreator,
+  logoutUserActionCreator,
+} from "../../store/features/usersSlice/usersSlice";
 import { showErrorToast, showSuccessToast } from "../../modals/modals";
+import useToken from "../useToken/useToken";
 
 interface UseUserStructure {
   loginUser: (userCredentials: UserCredentials) => Promise<void>;
+  logoutUser: () => void;
   registerUser: (registerUserData: UserRegisterData) => Promise<void>;
 }
 
 const useUser = (): UseUserStructure => {
   const dispatch = useAppDispatch();
+
+  const { removeToken } = useToken();
 
   const apiUrl = process.env.REACT_APP_URL_API!;
   const usersEndPoint = "/users";
@@ -50,6 +57,11 @@ const useUser = (): UseUserStructure => {
     }
   };
 
+  const logoutUser = () => {
+    removeToken();
+    dispatch(logoutUserActionCreator());
+  };
+
   const registerUser = async (registerUserData: UserRegisterData) => {
     try {
       await fetch(`${apiUrl}${usersEndPoint}${registerEndPoint}`, {
@@ -64,7 +76,7 @@ const useUser = (): UseUserStructure => {
     }
   };
 
-  return { loginUser, registerUser };
+  return { loginUser, registerUser, logoutUser };
 };
 
 export default useUser;
