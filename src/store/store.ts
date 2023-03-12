@@ -6,11 +6,13 @@ import {
   combineReducers,
 } from "@reduxjs/toolkit";
 import { eventsReducer } from "./features/eventsSlice/eventsSlice";
+import { uiReducer } from "./features/uiSlice/uiSlice";
 import { userReducer } from "./features/usersSlice/usersSlice";
 
 const rootReducer = combineReducers({
   user: userReducer,
   event: eventsReducer,
+  ui: uiReducer,
 });
 
 export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
