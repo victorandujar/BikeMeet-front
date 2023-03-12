@@ -1,7 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { EventsDataStructure } from "../../../types/events/types";
+import { EventsData, EventsDataStructure } from "../../../types/events/types";
 
-const initialState: EventsDataStructure = [];
+const initialState: EventsData = {
+  events: [],
+};
 
 const eventsSlice = createSlice({
   name: "event",
@@ -10,7 +12,10 @@ const eventsSlice = createSlice({
     loadEvents: (
       currentEventState,
       action: PayloadAction<EventsDataStructure>
-    ) => [...action.payload],
+    ) => ({
+      ...currentEventState,
+      events: action.payload,
+    }),
   },
 });
 

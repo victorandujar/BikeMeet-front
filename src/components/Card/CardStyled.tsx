@@ -24,7 +24,7 @@ const CardStyled = styled.article`
 
     &__info {
       display: flex;
-      justify-content: space-between;
+      gap: 2rem;
     }
 
     &__date {
@@ -32,7 +32,7 @@ const CardStyled = styled.article`
     }
 
     &__title {
-      font-size: 18px;
+      font-size: 1rem;
       font-family: ${(props) => props.theme.fonts.secondary};
     }
 

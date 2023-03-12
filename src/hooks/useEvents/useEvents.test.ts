@@ -25,7 +25,7 @@ describe("Given a useApi custom hook", () => {
       await getEvents();
 
       expect(spyDispatch).toHaveBeenCalledWith(
-        loadEventsActionCreator(mockEvents)
+        loadEventsActionCreator(mockEvents.events)
       );
     });
   });

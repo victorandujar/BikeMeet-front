@@ -5,6 +5,11 @@ export interface EventDataStructure {
   date: Date | string;
   description: string;
   image: string;
+  id: string;
+}
+
+export interface EventsData {
+  events: EventsDataStructure;
 }
 
 export type EventsDataStructure = EventDataStructure[];

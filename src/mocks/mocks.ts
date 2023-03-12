@@ -1,4 +1,4 @@
-import { EventDataStructure, EventsDataStructure } from "../types/events/types";
+import { EventDataStructure, EventsData } from "../types/events/types";
 
 export const mockEventSaCosta: EventDataStructure = {
   name: "Sa costa",
@@ -7,6 +7,7 @@ export const mockEventSaCosta: EventDataStructure = {
   distance: 123,
   image: "sacosta.png",
   type: "Gravel",
+  id: "sajkhdasdjkh",
 };
 
 export const mockEventMussara: EventDataStructure = {
@@ -16,9 +17,9 @@ export const mockEventMussara: EventDataStructure = {
   distance: 123,
   image: "sacosta.png",
   type: "Road",
+  id: "asdjkdhskdsjka",
 };
 
-export const mockEvents: EventsDataStructure = [
-  mockEventMussara,
-  mockEventSaCosta,
-];
+export const mockEvents: EventsData = {
+  events: [mockEventMussara, mockEventSaCosta],
+};
