@@ -11,6 +11,7 @@ declare module "styled-components" {
       mainColorButton: string;
       secondaryColorText: string;
       thirdColorText: string;
+      cardBackGroundColor: string;
     };
   }
 }

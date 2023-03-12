@@ -10,6 +10,7 @@ const theme: DefaultTheme = {
     mainColorText: "#fff",
     secondaryColorText: "#000",
     thirdColorText: "#0D23AF",
+    cardBackGroundColor: "#EAEAEA",
   },
 };
 
