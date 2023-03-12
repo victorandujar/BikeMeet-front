@@ -5,7 +5,7 @@ import { server } from "../../mocks/server";
 import Wrapper from "../../mocks/Wrapper";
 import { loadEventsActionCreator } from "../../store/features/eventsSlice/eventsSlice";
 import { store } from "../../store/store";
-import useApi from "./useApi";
+import useEvents from "./useEvents";
 
 afterEach(() => {
   jest.clearAllMocks();
@@ -20,7 +20,7 @@ describe("Given a useApi custom hook", () => {
         result: {
           current: { getEvents },
         },
-      } = renderHook(() => useApi(), { wrapper: Wrapper });
+      } = renderHook(() => useEvents(), { wrapper: Wrapper });
 
       await getEvents();
 
@@ -40,7 +40,7 @@ describe("Given a useApi custom hook", () => {
         result: {
           current: { getEvents },
         },
-      } = renderHook(() => useApi(), { wrapper: Wrapper });
+      } = renderHook(() => useEvents(), { wrapper: Wrapper });
 
       await getEvents();
 

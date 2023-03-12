@@ -7,7 +7,7 @@ const apiUrl = process.env.REACT_APP_URL_API;
 const pathEvents = "/events";
 const getEventsEndpoint = "/events";
 
-const useApi = () => {
+const useEvents = () => {
   const dispatch = useAppDispatch();
 
   const getEvents = useCallback(async () => {
@@ -34,4 +34,4 @@ const useApi = () => {
   return { getEvents };
 };
 
-export default useApi;
+export default useEvents;
