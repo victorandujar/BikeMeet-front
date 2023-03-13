@@ -25,4 +25,21 @@ export const mockEvents: EventsData = {
   events: [mockEventMussara, mockEventSaCosta],
 };
 
-export const mockIsLoadingState: UiState = { isLoading: false };
+export const mockIsLoadingState: UiState = {
+  isLoading: false,
+  modal: { isError: false, isSuccess: false, message: "" },
+};
+
+export const preloadedUiState: UiState = {
+  modal: {
+    isError: false,
+    message: "The item has been deleted!",
+    isSuccess: true,
+  },
+  isLoading: true,
+};
+
+export const preloadedErrorUiState: UiState = {
+  modal: { isError: true, message: "Wrong credentials", isSuccess: false },
+  isLoading: false,
+};
