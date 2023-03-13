@@ -1,12 +1,15 @@
 import styled from "styled-components";
 
 const LoadingStyled = styled.div`
-  min-height: 100vh;
-  width: 100%;
+  min-width: auto;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-color: ${(props) => props.theme.colors.loaderBackGroundColor};
 
   .pulsar {
