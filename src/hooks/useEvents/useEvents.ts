@@ -1,5 +1,9 @@
 import { useCallback } from "react";
 import { loadEventsActionCreator } from "../../store/features/eventsSlice/eventsSlice";
+import {
+  setIsLoadingActionCreator,
+  unsetIsLoadingActionCreator,
+} from "../../store/features/uiSlice/uiSlice";
 import { useAppDispatch } from "../../store/hooks";
 import { EventsData } from "../../types/events/types";
 
@@ -12,6 +16,8 @@ const useEvents = () => {
 
   const getEvents = useCallback(async () => {
     try {
+      dispatch(setIsLoadingActionCreator());
+
       const response = await fetch(
         `${apiUrl}${pathEvents}${getEventsEndpoint}`,
         {
@@ -25,8 +31,10 @@ const useEvents = () => {
         return;
       }
 
+      dispatch(unsetIsLoadingActionCreator());
       dispatch(loadEventsActionCreator(events));
     } catch (error) {
+      dispatch(unsetIsLoadingActionCreator());
       return (error as Error).message;
     }
   }, [dispatch]);

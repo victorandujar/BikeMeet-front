@@ -11,6 +11,7 @@ const theme: DefaultTheme = {
     secondaryColorText: "#000",
     thirdColorText: "#0D23AF",
     cardBackGroundColor: "#EAEAEA",
+    loaderBackGroundColor: "#fff",
   },
 };
 

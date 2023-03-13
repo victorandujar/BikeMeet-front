@@ -1,5 +1,8 @@
 import { screen } from "@testing-library/react";
-import { renderWithProviders } from "../testUtils/renderWithProviders";
+import {
+  renderRouterWithProviders,
+  renderWithProviders,
+} from "../../testUtils/renderWithProviders";
 import App from "./App";
 
 describe("Given an App component", () => {
@@ -7,7 +10,7 @@ describe("Given an App component", () => {
     test("Then it should show a heading with the text 'BIKEMEET'", () => {
       const headerText = "BIKEMEET";
 
-      renderWithProviders(<App />);
+      renderRouterWithProviders(<App />);
 
       const expectedHeader = screen.getByRole("heading", { name: headerText });
 
@@ -23,7 +26,7 @@ describe("Given an App component", () => {
     });
 
     test("Then it should show an image as logo", () => {
-      renderWithProviders(<App />);
+      renderRouterWithProviders(<App />);
 
       const expectedImage = screen.getByRole("img");
 

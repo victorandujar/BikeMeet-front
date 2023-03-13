@@ -12,6 +12,7 @@ declare module "styled-components" {
       secondaryColorText: string;
       thirdColorText: string;
       cardBackGroundColor: string;
+      loaderBackGroundColor: string;
     };
   }
 }

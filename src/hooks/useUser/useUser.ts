@@ -13,6 +13,10 @@ import {
 } from "../../store/features/usersSlice/usersSlice";
 import { showErrorToast, showSuccessToast } from "../../modals/modals";
 import useToken from "../useToken/useToken";
+import {
+  setIsLoadingActionCreator,
+  unsetIsLoadingActionCreator,
+} from "../../store/features/uiSlice/uiSlice";
 
 interface UseUserStructure {
   loginUser: (userCredentials: UserCredentials) => Promise<void>;
@@ -32,6 +36,7 @@ const useUser = (): UseUserStructure => {
 
   const loginUser = async (userCredentials: UserCredentials) => {
     try {
+      dispatch(setIsLoadingActionCreator());
       const response = await fetch(
         `${apiUrl}${usersEndPoint}${loginEndPoint}`,
         {
@@ -49,6 +54,7 @@ const useUser = (): UseUserStructure => {
 
       const userLogin: User = { email, id, token };
 
+      dispatch(unsetIsLoadingActionCreator());
       dispatch(loginUserActionCreator(userLogin));
 
       localStorage.setItem("token", token);
