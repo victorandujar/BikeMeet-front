@@ -11,9 +11,9 @@ import {
   loginUserActionCreator,
   logoutUserActionCreator,
 } from "../../store/features/usersSlice/usersSlice";
-import { showErrorToast, showSuccessToast } from "../../modals/modals";
 import useToken from "../useToken/useToken";
 import {
+  openModalActionCreator,
   setIsLoadingActionCreator,
   unsetIsLoadingActionCreator,
 } from "../../store/features/uiSlice/uiSlice";
@@ -59,7 +59,14 @@ const useUser = (): UseUserStructure => {
 
       localStorage.setItem("token", token);
     } catch {
-      showErrorToast("Invalid credentials");
+      dispatch(
+        openModalActionCreator({
+          isError: true,
+          message: "Wrong credentials",
+          isSuccess: false,
+        })
+      );
+      dispatch(unsetIsLoadingActionCreator());
     }
   };
 
@@ -76,9 +83,21 @@ const useUser = (): UseUserStructure => {
         headers: { "Content-Type": "application/json" },
       });
 
-      showSuccessToast("Your account has been created");
+      dispatch(
+        openModalActionCreator({
+          isError: false,
+          message: "The user has been created!",
+          isSuccess: true,
+        })
+      );
     } catch {
-      showErrorToast("Something went wrong. Try again!");
+      dispatch(
+        openModalActionCreator({
+          isError: true,
+          message: "Something went wrong. Try again!",
+          isSuccess: false,
+        })
+      );
     }
   };
 

@@ -17,7 +17,12 @@ describe("Given a Layout component", () => {
     test("Then it should show a a heading with the text 'BIKEMEET'", () => {
       const headerText = "BIKEMEET";
 
-      renderWithProviders(<Layout />, { ui: { isLoading: true } });
+      renderWithProviders(<Layout />, {
+        ui: {
+          isLoading: true,
+          modal: { isError: false, isSuccess: false, message: "" },
+        },
+      });
 
       const expectedLabel = screen.getByRole("heading", { name: headerText });
 

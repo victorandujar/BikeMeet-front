@@ -9,9 +9,10 @@ import {
   loginUserActionCreator,
   logoutUserActionCreator,
 } from "../../store/features/usersSlice/usersSlice";
+import { openModalActionCreator } from "../../store/features/uiSlice/uiSlice";
+import { ModalPayload } from "../../types/ui/ui";
 
 jest.mock("jwt-decode", () => jest.fn());
-
 const spy = jest.spyOn(store, "dispatch");
 
 beforeAll(() => {
@@ -58,6 +59,24 @@ describe("Given a useUser custom hook", () => {
       await loginUser(userCredentials);
 
       expect(spy).toHaveBeenCalledWith(loginUserActionCreator(mockLoginUser));
+    });
+
+    test("Then it should call the dispatch with the action openModalActionCreator", async () => {
+      const modalPayload: ModalPayload = {
+        isError: true,
+        isSuccess: false,
+        message: "Wrong credentials",
+      };
+
+      const {
+        result: {
+          current: { loginUser },
+        },
+      } = renderHook(() => useUser(), { wrapper: Wrapper });
+
+      await loginUser(userCredentials);
+
+      expect(spy).toHaveBeenCalledWith(openModalActionCreator(modalPayload));
     });
 
     test("Then it should not call the dispatch", async () => {
@@ -118,6 +137,24 @@ describe("Given a useUser custom hook", () => {
           headers: { "Content-Type": "application/json" },
         }
       );
+    });
+
+    test("Then it should call the dispatch for succes toast", async () => {
+      const modalPayload: ModalPayload = {
+        isError: false,
+        isSuccess: true,
+        message: "The user has been created!",
+      };
+
+      const {
+        result: {
+          current: { registerUser },
+        },
+      } = renderHook(() => useUser(), { wrapper: Wrapper });
+
+      await registerUser(mockUserToRegister);
+
+      expect(spy).toHaveBeenCalledWith(openModalActionCreator(modalPayload));
     });
   });
 });
