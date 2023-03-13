@@ -62,7 +62,7 @@ describe("Given a useToken custom hook", () => {
     });
   });
 
-  describe("When its getToken function is called but the ir no token", () => {
+  describe("When its getToken function is called but there is no token", () => {
     test("Then it should not call loginUserActionCreator", () => {
       const dispatchMock = jest.fn();
 

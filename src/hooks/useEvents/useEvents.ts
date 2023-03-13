@@ -27,10 +27,6 @@ const useEvents = () => {
       );
       const { events } = (await response.json()) as EventsData;
 
-      if (!response.ok) {
-        return;
-      }
-
       dispatch(unsetIsLoadingActionCreator());
       dispatch(loadEventsActionCreator(events));
     } catch (error) {

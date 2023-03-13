@@ -1,4 +1,5 @@
 import { EventDataStructure, EventsData } from "../types/events/types";
+import { UiState } from "../types/ui/ui";
 
 export const mockEventSaCosta: EventDataStructure = {
   name: "Sa costa",
@@ -23,3 +24,5 @@ export const mockEventMussara: EventDataStructure = {
 export const mockEvents: EventsData = {
   events: [mockEventMussara, mockEventSaCosta],
 };
+
+export const mockIsLoadingState: UiState = { isLoading: false };

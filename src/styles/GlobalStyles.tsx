@@ -32,7 +32,7 @@ button{
   font-family: inherit;
 }
 
-a, :visited, :active{
+a, :visited {
 text-decoration: none;
 color: #0D23AF
 }
