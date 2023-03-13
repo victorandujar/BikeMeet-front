@@ -1,5 +1,5 @@
-import Layout from "../components/Layout/Layout";
-import useToken from "../hooks/useToken/useToken";
+import Layout from "../Layout/Layout";
+import useToken from "../../hooks/useToken/useToken";
 
 const App = () => {
   const { getToken } = useToken();
