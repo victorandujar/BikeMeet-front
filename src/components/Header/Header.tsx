@@ -26,9 +26,9 @@ const Header = (): JSX.Element => {
         <h2 className="logo__title">BIKEMEET</h2>
       </div>
 
-      <nav className="main-header__navigation">
-        {isLogged ? (
-          <>
+      <div className="main-header__navigation">
+        {isLogged && (
+          <nav>
             <FontAwesomeIcon
               icon={faHouseChimney}
               className="fa-solid--active"
@@ -43,11 +43,9 @@ const Header = (): JSX.Element => {
               className="fa-solid--active"
               onClick={logoutUser}
             />
-          </>
-        ) : (
-          ""
+          </nav>
         )}
-      </nav>
+      </div>
     </HeaderStyled>
   );
 };

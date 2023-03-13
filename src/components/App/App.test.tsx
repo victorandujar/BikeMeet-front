@@ -3,6 +3,7 @@ import {
   renderRouterWithProviders,
   renderWithProviders,
 } from "../../testUtils/renderWithProviders";
+import { UserState } from "../../types/users/types";
 import App from "./App";
 
 describe("Given an App component", () => {
@@ -18,7 +19,8 @@ describe("Given an App component", () => {
     });
 
     test("Then it should show a navigation bar", () => {
-      renderWithProviders(<App />);
+      const user: UserState = { email: "", id: "", isLogged: true, token: "" };
+      renderWithProviders(<App />, { user: user });
 
       const expextedNavigationBar = screen.getByRole("navigation");
 
