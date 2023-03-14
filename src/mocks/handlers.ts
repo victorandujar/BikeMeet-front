@@ -29,10 +29,4 @@ export const errorHandlers = [
       return res(ctx.status(404));
     }
   ),
-  rest.get(
-    `${process.env.REACT_APP_URL_API}${routes.user}${routes.register}`,
-    (req, res, ctx) => {
-      return res(ctx.status(500));
-    }
-  ),
 ];
