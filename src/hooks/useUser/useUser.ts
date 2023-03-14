@@ -18,13 +18,7 @@ import {
   unsetIsLoadingActionCreator,
 } from "../../store/features/uiSlice/uiSlice";
 
-interface UseUserStructure {
-  loginUser: (userCredentials: UserCredentials) => Promise<void>;
-  logoutUser: () => void;
-  registerUser: (registerUserData: UserRegisterData) => Promise<void>;
-}
-
-const useUser = (): UseUserStructure => {
+const useUser = () => {
   const dispatch = useAppDispatch();
 
   const { removeToken } = useToken();
@@ -50,7 +44,7 @@ const useUser = (): UseUserStructure => {
 
       const tokenPayload: CustomTokenPayload = decodeToken(token);
 
-      const { id, email } = tokenPayload;
+      const { sub: id, email } = tokenPayload;
 
       const userLogin: User = { email, id, token };
 
@@ -58,7 +52,7 @@ const useUser = (): UseUserStructure => {
       dispatch(loginUserActionCreator(userLogin));
 
       localStorage.setItem("token", token);
-    } catch {
+    } catch (error) {
       dispatch(
         openModalActionCreator({
           isError: true,
@@ -90,14 +84,15 @@ const useUser = (): UseUserStructure => {
           isSuccess: true,
         })
       );
-    } catch {
+    } catch (error) {
       dispatch(
         openModalActionCreator({
           isError: true,
-          message: "Something went wrong. Try again!",
+          message: "",
           isSuccess: false,
         })
       );
+      return (error as Error).message;
     }
   };
 

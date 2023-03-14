@@ -1,3 +1,4 @@
+import { UserCredentials } from "../hooks/useUser/types";
 import { EventDataStructure, EventsData } from "../types/events/types";
 import { UiState } from "../types/ui/ui";
 
@@ -44,4 +45,18 @@ export const preloadedUiState: UiState = {
 export const preloadedErrorUiState: UiState = {
   modal: { isError: true, message: "Wrong credentials", isSuccess: false },
   isLoading: false,
+};
+
+export const mockUser: UserCredentials = {
+  email: "jordi@gmail.com",
+  password: "12231212",
+};
+
+export const preloadedStateLoggedIn = {
+  user: {
+    email: "",
+    id: "",
+    isLogged: true,
+    token: "",
+  },
 };

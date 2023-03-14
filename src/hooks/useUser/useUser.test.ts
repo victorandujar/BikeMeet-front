@@ -26,7 +26,7 @@ const userCredentials: UserCredentials = {
 
 const mockTokenPayload: CustomTokenPayload = {
   email: "victor@andujar.org",
-  id: "12345678",
+  sub: "12345678",
 };
 
 const mockUserToRegister: UserRegisterData = {
@@ -39,7 +39,7 @@ const mockToken = "vik27634fvj";
 
 const mockLoginUser: User = {
   email: mockTokenPayload.email,
-  id: mockTokenPayload.id,
+  id: mockTokenPayload.sub,
   token: mockToken,
 };
 

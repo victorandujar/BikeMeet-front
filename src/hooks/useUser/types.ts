@@ -16,6 +16,6 @@ export interface UserRegisterData {
 }
 
 export interface CustomTokenPayload extends JwtPayload {
-  id: string;
+  sub: string;
   email: string;
 }
