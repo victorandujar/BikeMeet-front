@@ -9,7 +9,7 @@ import { EventsData } from "../../types/events/types";
 
 const apiUrl = process.env.REACT_APP_URL_API;
 const pathEvents = "/events";
-const getEventsEndpoint = "/events";
+const getEventsEndpoint = "/";
 
 const useEvents = () => {
   const dispatch = useAppDispatch();

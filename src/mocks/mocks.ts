@@ -9,6 +9,7 @@ export const mockEventSaCosta: EventDataStructure = {
   image: "sacosta.png",
   type: "Gravel",
   id: "sajkhdasdjkh",
+  postedBy: "2392382308901",
 };
 
 export const mockEventMussara: EventDataStructure = {
@@ -19,6 +20,7 @@ export const mockEventMussara: EventDataStructure = {
   image: "sacosta.png",
   type: "Road",
   id: "asdjkdhskdsjka",
+  postedBy: "2392382308901",
 };
 
 export const mockEvents: EventsData = {

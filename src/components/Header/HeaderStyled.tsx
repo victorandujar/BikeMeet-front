@@ -32,6 +32,8 @@ const HeaderStyled = styled.header`
   .navigation {
     display: flex;
     gap: 62px;
+    width: 100%;
+    justify-content: space-between;
   }
 
   .svg-inline--fa {
