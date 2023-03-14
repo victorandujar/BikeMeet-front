@@ -4,12 +4,11 @@ import useEvents from "../../hooks/useEvents/useEvents";
 import HomePageStyled from "./HomePageStyled";
 
 const HomePage = (): JSX.Element => {
-  const { getEvents, getUserEvents } = useEvents();
+  const { getEvents } = useEvents();
 
   useEffect(() => {
     getEvents();
-    getUserEvents();
-  }, [getEvents, getUserEvents]);
+  }, [getEvents]);
 
   return (
     <HomePageStyled className="home-page">

@@ -8,6 +8,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAppSelector } from "../../store/hooks";
 import useUser from "../../hooks/useUser/useUser";
+import { NavLink } from "react-router-dom";
 
 const Header = (): JSX.Element => {
   const { isLogged } = useAppSelector((state) => state.user);
@@ -29,14 +30,18 @@ const Header = (): JSX.Element => {
       <div className="main-header__navigation navigation">
         {isLogged && (
           <nav className="navigation">
-            <FontAwesomeIcon
-              icon={faHouseChimney}
-              className="fa-solid--active"
-            />
-            <FontAwesomeIcon
-              icon={faRectangleList}
-              className="fa-solid--active"
-            />
+            <NavLink to={"/"}>
+              <FontAwesomeIcon
+                icon={faHouseChimney}
+                className="fa-solid--active"
+              />
+            </NavLink>
+            <NavLink to={"/my-space"}>
+              <FontAwesomeIcon
+                icon={faRectangleList}
+                className="fa-solid--active"
+              />
+            </NavLink>
             <FontAwesomeIcon icon={faPlus} className="fa-solid--active" />
             <FontAwesomeIcon
               icon={faRightFromBracket}
