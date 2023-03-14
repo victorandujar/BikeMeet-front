@@ -1,18 +1,9 @@
 import HeaderStyled from "./HeaderStyled";
-import {
-  faHouseChimney,
-  faRectangleList,
-  faPlus,
-  faRightFromBracket,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAppSelector } from "../../store/hooks";
-import useUser from "../../hooks/useUser/useUser";
-import { NavLink } from "react-router-dom";
+import Navbar from "../Navbar/Navbar";
 
 const Header = (): JSX.Element => {
   const { isLogged } = useAppSelector((state) => state.user);
-  const { logoutUser } = useUser();
 
   return (
     <HeaderStyled className="main-header">
@@ -28,28 +19,7 @@ const Header = (): JSX.Element => {
       </div>
 
       <div className="main-header__navigation navigation">
-        {isLogged && (
-          <nav className="navigation">
-            <NavLink to={"/"}>
-              <FontAwesomeIcon
-                icon={faHouseChimney}
-                className="fa-solid--active"
-              />
-            </NavLink>
-            <NavLink to={"/my-space"}>
-              <FontAwesomeIcon
-                icon={faRectangleList}
-                className="fa-solid--active"
-              />
-            </NavLink>
-            <FontAwesomeIcon icon={faPlus} className="fa-solid--active" />
-            <FontAwesomeIcon
-              icon={faRightFromBracket}
-              className="fa-solid--active"
-              onClick={logoutUser}
-            />
-          </nav>
-        )}
+        {isLogged && <Navbar />}
       </div>
     </HeaderStyled>
   );

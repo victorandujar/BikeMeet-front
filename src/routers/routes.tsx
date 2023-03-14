@@ -15,7 +15,10 @@ const routes: RouteObject[] = [
       { path: endpoints.login, element: <LoginPage /> },
       { path: endpoints.register, element: <RegisterPage /> },
       { path: "/", element: <ProtectedRoute element={<HomePage />} /> },
-      { path: endpoints.mySpace, element: <PrivatePage /> },
+      {
+        path: endpoints.mySpace,
+        element: <ProtectedRoute element={<PrivatePage />} />,
+      },
     ],
   },
 ];
