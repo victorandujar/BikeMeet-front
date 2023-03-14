@@ -6,7 +6,7 @@ const HeaderStyled = styled.header`
   align-items: flex-start;
   justify-content: space-between;
   padding: 0 0 60px 0;
-  min-width: 100%;
+  width: 100%;
   gap: 40px;
 
   .logo {
@@ -25,10 +25,15 @@ const HeaderStyled = styled.header`
 
   .main-header {
     &__navigation {
-      display: flex;
-      flex-direction: row;
-      gap: 60px;
+      min-width: 100%;
     }
+  }
+
+  .navigation {
+    display: flex;
+    gap: 62px;
+    width: 100%;
+    justify-content: space-between;
   }
 
   .svg-inline--fa {

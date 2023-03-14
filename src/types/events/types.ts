@@ -6,6 +6,7 @@ export interface EventDataStructure {
   description: string;
   image: string;
   id: string;
+  postedBy: string;
 }
 
 export interface EventsData {

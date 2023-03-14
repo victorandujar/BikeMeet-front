@@ -5,7 +5,8 @@ const routes = {
   user: "/users",
   login: "/login",
   events: "/events",
-  getEvents: "/events",
+  getEvents: "/",
+  register: "/register",
 };
 
 export const handlers = [
@@ -27,5 +28,9 @@ export const errorHandlers = [
     (req, res, ctx) => {
       return res(ctx.status(404));
     }
+  ),
+  rest.post(
+    `${process.env.REACT_APP_URL_API}${routes.user}${routes.register}`,
+    async (req, res, ctx) => res(ctx.status(400))
   ),
 ];

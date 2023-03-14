@@ -26,9 +26,9 @@ const Header = (): JSX.Element => {
         <h2 className="logo__title">BIKEMEET</h2>
       </div>
 
-      <div className="main-header__navigation">
+      <div className="main-header__navigation navigation">
         {isLogged && (
-          <nav>
+          <nav className="navigation">
             <FontAwesomeIcon
               icon={faHouseChimney}
               className="fa-solid--active"
