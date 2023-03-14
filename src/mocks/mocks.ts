@@ -45,3 +45,12 @@ export const preloadedErrorUiState: UiState = {
   modal: { isError: true, message: "Wrong credentials", isSuccess: false },
   isLoading: false,
 };
+
+export const preloadedStateLoggedIn = {
+  user: {
+    email: "",
+    id: "",
+    isLogged: true,
+    token: "",
+  },
+};

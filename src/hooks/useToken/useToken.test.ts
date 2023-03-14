@@ -15,7 +15,7 @@ beforeAll(() => {
 
 const mockTokenPayload: CustomTokenPayload = {
   email: "victor@andujar.org",
-  id: "12345678",
+  sub: "12345678",
 };
 
 describe("Given a useToken custom hook", () => {

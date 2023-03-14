@@ -29,8 +29,4 @@ export const errorHandlers = [
       return res(ctx.status(404));
     }
   ),
-  rest.post(
-    `${process.env.REACT_APP_URL_API}${routes.user}${routes.register}`,
-    async (req, res, ctx) => res(ctx.status(400))
-  ),
 ];
