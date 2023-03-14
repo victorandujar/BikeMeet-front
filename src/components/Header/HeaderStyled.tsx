@@ -36,16 +36,16 @@ const HeaderStyled = styled.header`
     justify-content: space-between;
   }
 
+  .active {
+    color: ${(props) => props.theme.colors.thirdColorText};
+  }
+
   .svg-inline--fa {
     height: 1.5em;
   }
 
   .fa-solid {
     color: ${(props) => props.theme.colors.secondaryColorText};
-
-    &--active:hover {
-      color: ${(props) => props.theme.colors.thirdColorText};
-    }
   }
 `;
 

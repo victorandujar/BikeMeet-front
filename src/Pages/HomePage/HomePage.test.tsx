@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
 import { mockEvents } from "../../mocks/mocks";
-import { renderWithProviders } from "../../testUtils/renderWithProviders";
+import { renderRouterWithProviders } from "../../testUtils/renderWithProviders";
 import HomePage from "./HomePage";
 
 jest.mock("../../store/hooks", () => ({
@@ -13,7 +13,7 @@ describe("Given a HomePage component", () => {
     test("Then it should show a list of cards with a card header 'Mussara'", () => {
       const headerText = "Mussara";
 
-      renderWithProviders(<HomePage />);
+      renderRouterWithProviders(<HomePage />);
 
       const expectedHeaderCard = screen.getByRole("heading", {
         name: headerText,

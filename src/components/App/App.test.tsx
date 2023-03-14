@@ -1,8 +1,5 @@
 import { screen } from "@testing-library/react";
-import {
-  renderRouterWithProviders,
-  renderWithProviders,
-} from "../../testUtils/renderWithProviders";
+import { renderRouterWithProviders } from "../../testUtils/renderWithProviders";
 import { UserState } from "../../types/users/types";
 import App from "./App";
 
@@ -20,7 +17,7 @@ describe("Given an App component", () => {
 
     test("Then it should show a navigation bar", () => {
       const user: UserState = { email: "", id: "", isLogged: true, token: "" };
-      renderWithProviders(<App />, { user: user });
+      renderRouterWithProviders(<App />, { user: user });
 
       const expextedNavigationBar = screen.getByRole("navigation");
 
