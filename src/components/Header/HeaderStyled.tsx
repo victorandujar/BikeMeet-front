@@ -28,25 +28,6 @@ const HeaderStyled = styled.header`
       min-width: 100%;
     }
   }
-
-  .navigation {
-    display: flex;
-    gap: 62px;
-    width: 100%;
-    justify-content: space-between;
-  }
-
-  .active {
-    color: ${(props) => props.theme.colors.thirdColorText};
-  }
-
-  .svg-inline--fa {
-    height: 1.5em;
-  }
-
-  .fa-solid {
-    color: ${(props) => props.theme.colors.secondaryColorText};
-  }
 `;
 
 export default HeaderStyled;
