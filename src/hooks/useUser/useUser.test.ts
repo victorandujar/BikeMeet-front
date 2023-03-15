@@ -157,4 +157,28 @@ describe("Given a useUser custom hook", () => {
       expect(spy).toHaveBeenCalledWith(openModalActionCreator(modalPayload));
     });
   });
+
+  describe("When the response is not ok", () => {
+    test("Then it should throw an error", async () => {
+      const modalPayload: ModalPayload = {
+        isError: true,
+        message: "Couldn't create user. Try again!",
+        isSuccess: false,
+      };
+
+      const {
+        result: {
+          current: { registerUser },
+        },
+      } = renderHook(() => useUser(), { wrapper: Wrapper });
+
+      await registerUser({
+        email: "",
+        name: "",
+        password: "",
+      });
+
+      expect(spy).toHaveBeenCalledWith(openModalActionCreator(modalPayload));
+    });
+  });
 });

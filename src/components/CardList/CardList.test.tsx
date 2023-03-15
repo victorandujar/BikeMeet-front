@@ -8,9 +8,12 @@ describe("Given a CardList component", () => {
     test("Then it should show a card list with a Card, and a Card header name 'Sa costa'", () => {
       const headerText = "Sa costa";
 
-      renderRouterWithProviders(<CardList />, {
-        event: { events: mockEvents.events },
-      });
+      renderRouterWithProviders(
+        {
+          event: { events: mockEvents.events },
+        },
+        <CardList />
+      );
 
       const expectedHeader = screen.getByRole("heading", { name: headerText });
 

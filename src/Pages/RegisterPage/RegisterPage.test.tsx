@@ -7,7 +7,7 @@ describe("Given a RegisterPage component", () => {
     test("Then it should show a header with the text 'Sign up'", () => {
       const headertext = "Sign up";
 
-      renderRouterWithProviders(<RegisterPage />);
+      renderRouterWithProviders({}, <RegisterPage />);
 
       const expectedHeader = screen.getByRole("heading", { name: headertext });
 
@@ -17,7 +17,7 @@ describe("Given a RegisterPage component", () => {
     test("Then it should show a button with the text 'SIGN UP'", () => {
       const buttonText = "Sign up";
 
-      renderRouterWithProviders(<RegisterPage />);
+      renderRouterWithProviders({}, <RegisterPage />);
 
       const expectedButton = screen.getByRole("button", {
         name: buttonText,

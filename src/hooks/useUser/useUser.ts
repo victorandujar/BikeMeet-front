@@ -71,11 +71,18 @@ const useUser = () => {
 
   const registerUser = async (registerUserData: UserRegisterData) => {
     try {
-      await fetch(`${apiUrl}${usersEndPoint}${registerEndPoint}`, {
-        method: "POST",
-        body: JSON.stringify(registerUserData),
-        headers: { "Content-Type": "application/json" },
-      });
+      const response = await fetch(
+        `${apiUrl}${usersEndPoint}${registerEndPoint}`,
+        {
+          method: "POST",
+          body: JSON.stringify(registerUserData),
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Couldn't create user. Try again!");
+      }
 
       dispatch(
         openModalActionCreator({
@@ -88,7 +95,7 @@ const useUser = () => {
       dispatch(
         openModalActionCreator({
           isError: true,
-          message: "",
+          message: "Couldn't create user. Try again!",
           isSuccess: false,
         })
       );

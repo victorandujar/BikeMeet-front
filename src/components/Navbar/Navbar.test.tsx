@@ -7,7 +7,7 @@ describe("Given a Navbar component", () => {
   describe("When it is rendered", () => {
     test("Then it should show a font awsome icon from Home", () => {
       const user: UserState = { email: "", id: "", isLogged: true, token: "" };
-      renderRouterWithProviders(<Navbar />, { user: user });
+      renderRouterWithProviders({ user: user }, <Navbar />);
 
       const expectedNavBar = screen.getByRole("navigation");
 

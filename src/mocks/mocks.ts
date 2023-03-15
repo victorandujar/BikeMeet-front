@@ -1,4 +1,8 @@
-import { EventDataStructure, EventsData } from "../types/events/types";
+import {
+  EventDataStructure,
+  EventsData,
+  EventsDataStructure,
+} from "../types/events/types";
 import { UiState } from "../types/ui/types";
 
 export const mockEventSaCosta: EventDataStructure = {
@@ -22,6 +26,8 @@ export const mockEventMussara: EventDataStructure = {
   id: "asdjkdhskdsjka",
   postedBy: "2392382308901",
 };
+
+export const mockEventsDelete: EventsDataStructure = [mockEventSaCosta];
 
 export const mockEvents: EventsData = {
   events: [mockEventMussara, mockEventSaCosta],

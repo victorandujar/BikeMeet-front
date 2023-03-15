@@ -32,11 +32,11 @@ describe("Given a events reducer", () => {
   describe("When it receives a new state and the action to delete events", () => {
     test("Then it should return an event", () => {
       const deleteEventAction = deleteEventActionCreator(mockEventMussara);
-      const expectedEventToDelete: EventsData = mockEvents;
+      const expectedNewArray: EventsData = { events: [mockEventSaCosta] };
 
       const deletedEvent = eventsReducer(mockEvents, deleteEventAction);
 
-      expect(deletedEvent).toStrictEqual(expectedEventToDelete);
+      expect(deletedEvent).toStrictEqual(expectedNewArray);
     });
   });
 });

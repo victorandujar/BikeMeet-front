@@ -7,7 +7,7 @@ describe("Given a NotFoundPage component", () => {
     test("Then it should show an image with an alt text 'page-not-foun'", () => {
       const expectedText = "page-not-found";
 
-      renderRouterWithProviders(<NotFoundPage />);
+      renderRouterWithProviders({}, <NotFoundPage />);
 
       const expectedImage = screen.getByTestId(expectedText);
 
@@ -17,7 +17,7 @@ describe("Given a NotFoundPage component", () => {
     test("Then it should show a header with the text 'Oh NO!'", () => {
       const headerText = "Oh NO!";
 
-      renderRouterWithProviders(<NotFoundPage />);
+      renderRouterWithProviders({}, <NotFoundPage />);
 
       const expectedHeader = screen.getByRole("heading", { name: headerText });
 
@@ -27,7 +27,7 @@ describe("Given a NotFoundPage component", () => {
     test("Then it should show a button with the text 'Back to home page'", () => {
       const expectedText = "Back to home page";
 
-      renderRouterWithProviders(<NotFoundPage />);
+      renderRouterWithProviders({}, <NotFoundPage />);
 
       const expectedButton = screen.getByRole("button", {
         name: expectedText,

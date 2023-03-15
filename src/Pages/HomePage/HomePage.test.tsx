@@ -13,7 +13,7 @@ describe("Given a HomePage component", () => {
     test("Then it should show a list of cards with a card header 'Mussara'", () => {
       const headerText = "Mussara";
 
-      renderRouterWithProviders(<HomePage />);
+      renderRouterWithProviders({}, <HomePage />);
 
       const expectedHeaderCard = screen.getByRole("heading", {
         name: headerText,

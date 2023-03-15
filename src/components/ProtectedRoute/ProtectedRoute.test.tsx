@@ -15,7 +15,7 @@ describe("Given a ProtectedRoute component", () => {
       });
       const element = <div>Protected route</div>;
 
-      renderRouterWithProviders(<ProtectedRoute element={element} />);
+      renderRouterWithProviders({}, <ProtectedRoute element={element} />);
 
       const expectedElement = screen.getByText("Protected route");
 
@@ -28,7 +28,10 @@ describe("Given a ProtectedRoute component", () => {
       const text = "Text for test";
       const containerWithText = <div>{text}</div>;
 
-      renderRouterWithProviders(<ProtectedRoute element={containerWithText} />);
+      renderRouterWithProviders(
+        {},
+        <ProtectedRoute element={containerWithText} />
+      );
 
       const expectedRenderedText = screen.queryByText(text);
 
