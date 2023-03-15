@@ -1,17 +1,21 @@
 import { useCallback } from "react";
-import { loadEventsActionCreator } from "../../store/features/eventsSlice/eventsSlice";
+import {
+  deleteEventActionCreator,
+  loadEventsActionCreator,
+} from "../../store/features/eventsSlice/eventsSlice";
 import {
   openModalActionCreator,
   setIsLoadingActionCreator,
   unsetIsLoadingActionCreator,
 } from "../../store/features/uiSlice/uiSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { EventsData } from "../../types/events/types";
+import { EventDataStructure, EventsData } from "../../types/events/types";
 
 const apiUrl = process.env.REACT_APP_URL_API;
 const pathEvents = "/events";
 const getEventsEndpoint = "/";
 const getUserEventsEndpoint = "/my-events";
+const deleteEventEndpoint = "/delete/";
 
 const useEvents = () => {
   const dispatch = useAppDispatch();
@@ -74,7 +78,40 @@ const useEvents = () => {
     }
   }, [dispatch, token]);
 
-  return { getEvents, getUserEvents };
+  const deleteEvent = useCallback(
+    async (event: EventDataStructure) => {
+      try {
+        dispatch(setIsLoadingActionCreator());
+        const response = await fetch(
+          `${process.env.REACT_APP_URL_API}${deleteEventEndpoint}${event.id}`,
+          {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json; charset=UTF-8" },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("We couldn't delete the selected event. Try again!");
+        }
+
+        dispatch(unsetIsLoadingActionCreator());
+        dispatch(deleteEventActionCreator(event));
+      } catch (error) {
+        dispatch(unsetIsLoadingActionCreator());
+        dispatch(
+          openModalActionCreator({
+            isError: true,
+            isSuccess: false,
+            message: "We couldn't delete the selected event. Try again!",
+          })
+        );
+        return (error as Error).message;
+      }
+    },
+    [dispatch]
+  );
+
+  return { getEvents, getUserEvents, deleteEvent };
 };
 
 export default useEvents;
