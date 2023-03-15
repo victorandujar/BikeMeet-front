@@ -1,4 +1,4 @@
-import { ModalPayload, UiState } from "../../../types/ui/ui";
+import { ModalPayload, UiState } from "../../../types/ui/types";
 import {
   closeModalActionCreator,
   openModalActionCreator,

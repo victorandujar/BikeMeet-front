@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ModalPayload, UiState } from "../../../types/ui/ui";
+import { ModalPayload, UiState } from "../../../types/ui/types";
 
 const initialState: UiState = {
   isLoading: false,
