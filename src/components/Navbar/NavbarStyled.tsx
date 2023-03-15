@@ -10,11 +10,7 @@ const NavbarStyled = styled.nav`
     height: 1.5em;
   }
 
-  .fa-solid {
-    color: ${(props) => props.theme.colors.secondaryColorText};
-  }
-
-  :active {
+  .active {
     color: ${(props) => props.theme.colors.thirdColorText};
   }
 `;
