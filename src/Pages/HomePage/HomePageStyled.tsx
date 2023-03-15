@@ -5,6 +5,7 @@ const HomePageStyled = styled.div`
   flex-direction: column;
   gap: 2.6875rem;
   font-family: ${(props) => props.theme.fonts.secondary};
+  width: 100%;
 `;
 
 export default HomePageStyled;
