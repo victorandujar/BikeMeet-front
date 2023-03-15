@@ -8,7 +8,7 @@ describe("Given an App component", () => {
     test("Then it should show a heading with the text 'BIKEMEET'", () => {
       const headerText = "BIKEMEET";
 
-      renderRouterWithProviders(<App />);
+      renderRouterWithProviders({}, <App />);
 
       const expectedHeader = screen.getByRole("heading", { name: headerText });
 
@@ -17,7 +17,7 @@ describe("Given an App component", () => {
 
     test("Then it should show a navigation bar", () => {
       const user: UserState = { email: "", id: "", isLogged: true, token: "" };
-      renderRouterWithProviders(<App />, { user: user });
+      renderRouterWithProviders({ user: user }, <App />);
 
       const expextedNavigationBar = screen.getByRole("navigation");
 
@@ -25,7 +25,7 @@ describe("Given an App component", () => {
     });
 
     test("Then it should show an image as logo", () => {
-      renderRouterWithProviders(<App />);
+      renderRouterWithProviders({}, <App />);
 
       const expectedImage = screen.getByRole("img");
 

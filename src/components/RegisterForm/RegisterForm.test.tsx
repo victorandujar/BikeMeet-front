@@ -16,7 +16,7 @@ describe("Given a RegisterForm component", () => {
     test("Then it should show a label with the text 'Full name'", () => {
       const labelText = "Full name";
 
-      renderRouterWithProviders(<RegisterForm />);
+      renderRouterWithProviders({}, <RegisterForm />);
 
       const expectedLabel = screen.getByLabelText(labelText);
 
@@ -26,7 +26,7 @@ describe("Given a RegisterForm component", () => {
     test("Then it should show a labe with the text 'Email'", () => {
       const labelText = "Email";
 
-      renderRouterWithProviders(<RegisterForm />);
+      renderRouterWithProviders({}, <RegisterForm />);
 
       const expectedLabel = screen.getByLabelText(labelText);
 
@@ -36,7 +36,7 @@ describe("Given a RegisterForm component", () => {
     test("Then it should show a label with the text 'Password'", () => {
       const labelText = "Password";
 
-      renderRouterWithProviders(<RegisterForm />);
+      renderRouterWithProviders({}, <RegisterForm />);
 
       const expectedLabel = screen.getByLabelText(labelText);
 
@@ -46,7 +46,7 @@ describe("Given a RegisterForm component", () => {
     test("Then it should show a button with the text 'Sign up'", () => {
       const buttonText = "Sign up";
 
-      renderRouterWithProviders(<RegisterForm />);
+      renderRouterWithProviders({}, <RegisterForm />);
 
       const expectedButton = screen.getByRole("button", {
         name: buttonText,
@@ -61,7 +61,7 @@ describe("Given a RegisterForm component", () => {
       const emailLabel = "Email";
       const emailText = "jordi@gmail.com";
 
-      renderRouterWithProviders(<RegisterForm />);
+      renderRouterWithProviders({}, <RegisterForm />);
 
       const emailInput = screen.getByLabelText(emailLabel);
 
@@ -76,7 +76,7 @@ describe("Given a RegisterForm component", () => {
       const passwordLabel = "Password";
       const passwordText = "12345678";
 
-      renderRouterWithProviders(<RegisterForm />);
+      renderRouterWithProviders({}, <RegisterForm />);
 
       const passwordInput = screen.getByLabelText(passwordLabel);
 
@@ -91,7 +91,7 @@ describe("Given a RegisterForm component", () => {
       const nameLabel = "Full name";
       const nameText = "Josep Ventura";
 
-      renderRouterWithProviders(<RegisterForm />);
+      renderRouterWithProviders({}, <RegisterForm />);
 
       const nameInput = screen.getByLabelText(nameLabel);
 
@@ -113,7 +113,7 @@ describe("Given a RegisterForm component", () => {
         name: "victor",
       };
 
-      renderRouterWithProviders(<RegisterForm />);
+      renderRouterWithProviders({}, <RegisterForm />);
 
       const emailInputPlaceholder = screen.getByPlaceholderText(
         emailInputPlaceholderText

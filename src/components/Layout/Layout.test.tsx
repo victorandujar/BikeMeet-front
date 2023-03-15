@@ -7,7 +7,7 @@ describe("Given a Layout component", () => {
   describe("When it is rendered", () => {
     test("Then it should show a navigation bar", () => {
       const user: UserState = { email: "", id: "", isLogged: true, token: "" };
-      renderRouterWithProviders(<Layout />, { user: user });
+      renderRouterWithProviders({ user: user }, <Layout />);
 
       const navigationBar = screen.getByRole("navigation");
 
@@ -17,12 +17,15 @@ describe("Given a Layout component", () => {
     test("Then it should show a a heading with the text 'BIKEMEET'", () => {
       const headerText = "BIKEMEET";
 
-      renderRouterWithProviders(<Layout />, {
-        ui: {
-          isLoading: true,
-          modal: { isError: false, isSuccess: false, message: "" },
+      renderRouterWithProviders(
+        {
+          ui: {
+            isLoading: true,
+            modal: { isError: false, isSuccess: false, message: "" },
+          },
         },
-      });
+        <Layout />
+      );
 
       const expectedLabel = screen.getByRole("heading", { name: headerText });
 

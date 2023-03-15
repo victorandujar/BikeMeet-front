@@ -7,6 +7,7 @@ const routes = {
   events: "/events",
   getEvents: "/",
   register: "/register",
+  delete: "/delete/",
 };
 
 export const handlers = [
@@ -25,8 +26,6 @@ export const handlers = [
 export const errorHandlers = [
   rest.get(
     `${process.env.REACT_APP_URL_API}${routes.events}${routes.getEvents}`,
-    (req, res, ctx) => {
-      return res(ctx.status(404));
-    }
+    async (req, res, ctx) => res(ctx.status(404))
   ),
 ];

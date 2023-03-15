@@ -7,7 +7,7 @@ describe("Given a Login page", () => {
     test("Then it should show a heading with the text 'Log in'", () => {
       const headingText = "Log in";
 
-      renderRouterWithProviders(<LoginPage />);
+      renderRouterWithProviders({}, <LoginPage />);
 
       const expectedHeading = screen.getByRole("heading", {
         name: headingText,
@@ -19,7 +19,7 @@ describe("Given a Login page", () => {
     test("Then it should show a button with the text 'LOG IN'", () => {
       const buttonText = "Log in";
 
-      renderRouterWithProviders(<LoginPage />);
+      renderRouterWithProviders({}, <LoginPage />);
 
       const expectedButton = screen.getByRole("button", {
         name: buttonText,
