@@ -1,10 +1,17 @@
 import { renderHook } from "@testing-library/react";
 import { errorHandlers } from "../../mocks/handlers";
-import { mockEvents } from "../../mocks/mocks";
+import { mockEventMussara, mockEvents } from "../../mocks/mocks";
 import { server } from "../../mocks/server";
 import Wrapper from "../../mocks/Wrapper";
-import { loadEventsActionCreator } from "../../store/features/eventsSlice/eventsSlice";
-import { unsetIsLoadingActionCreator } from "../../store/features/uiSlice/uiSlice";
+import {
+  deleteEventActionCreator,
+  loadEventsActionCreator,
+} from "../../store/features/eventsSlice/eventsSlice";
+import {
+  openModalActionCreator,
+  setIsLoadingActionCreator,
+  unsetIsLoadingActionCreator,
+} from "../../store/features/uiSlice/uiSlice";
 import { store } from "../../store/store";
 import useEvents from "./useEvents";
 
@@ -51,7 +58,7 @@ describe("Given a useEvents custom hook", () => {
     });
   });
 
-  describe("Given a getUserEvents function", () => {
+  describe("When the getUserEvents is called", () => {
     beforeEach(() => {
       global.fetch = jest.fn().mockResolvedValue({
         ok: true,
@@ -94,6 +101,73 @@ describe("Given a useEvents custom hook", () => {
       await getUserEvents();
 
       expect(spyDispatch).toHaveBeenCalledWith(unsetIsLoadingActionCreator());
+    });
+  });
+
+  describe("When te deleteEvent function is called", () => {
+    beforeEach(() => {
+      global.fetch = jest.fn();
+    });
+
+    test("Then it should call the setIsLoadingActionCreator dispatch", async () => {
+      const {
+        result: {
+          current: { deleteEvent },
+        },
+      } = renderHook(() => useEvents(), { wrapper: Wrapper });
+
+      await deleteEvent(mockEventMussara);
+
+      expect(spyDispatch).toHaveBeenCalledWith(setIsLoadingActionCreator());
+    });
+
+    test("Then it should should call the unsetIsLoadingActionCreator discpath", async () => {
+      const {
+        result: {
+          current: { deleteEvent },
+        },
+      } = renderHook(() => useEvents(), { wrapper: Wrapper });
+
+      await deleteEvent(mockEventMussara);
+
+      expect(spyDispatch).toHaveBeenCalledWith(unsetIsLoadingActionCreator());
+    });
+
+    test("Then it should call the openModalActionCreator", async () => {
+      const mockErrorMessage = "Error message";
+      (global.fetch as jest.Mock).mockRejectedValueOnce(
+        new Error(mockErrorMessage)
+      );
+
+      const {
+        result: {
+          current: { deleteEvent },
+        },
+      } = renderHook(() => useEvents(), { wrapper: Wrapper });
+
+      await deleteEvent(mockEventMussara);
+
+      expect(spyDispatch).toHaveBeenCalledWith(
+        openModalActionCreator({
+          isError: true,
+          isSuccess: false,
+          message: "We couldn't delete the selected event. Try again!",
+        })
+      );
+    });
+
+    test("Then it should call the dispatch", async () => {
+      const {
+        result: {
+          current: { deleteEvent },
+        },
+      } = renderHook(() => useEvents(), { wrapper: Wrapper });
+
+      (global.fetch as jest.Mock).mockResolvedValueOnce({ ok: true });
+      await deleteEvent(mockEventMussara);
+      expect(spyDispatch).toHaveBeenCalledWith(
+        deleteEventActionCreator(mockEventMussara)
+      );
     });
   });
 });
