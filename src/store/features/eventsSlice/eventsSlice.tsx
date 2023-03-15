@@ -24,9 +24,11 @@ const eventsSlice = createSlice({
       currentEventState,
       action: PayloadAction<EventDataStructure>
     ) => {
-      currentEventState.events.filter(
+      const newEvents = currentEventState.events.filter(
         (event) => event.id !== action.payload.id
       );
+
+      return { events: newEvents };
     },
   },
 });
