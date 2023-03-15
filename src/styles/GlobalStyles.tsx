@@ -7,7 +7,7 @@ const GlobalStyles = createGlobalStyle`
 }
 
 body {
-  padding: 10px;
+  padding: 20px;
   background-color: #fff;
   font-family: "Inter";
   min-height: 100vh;
@@ -36,6 +36,8 @@ a, :visited {
 text-decoration: none;
 color: inherit;
 }
+
+
 `;
 
 export default GlobalStyles;
