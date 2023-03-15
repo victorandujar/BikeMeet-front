@@ -34,7 +34,7 @@ button{
 
 a, :visited {
 text-decoration: none;
-color: #0D23AF
+color: inherit;
 }
 `;
 
