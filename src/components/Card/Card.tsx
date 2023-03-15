@@ -26,7 +26,7 @@ const Card = ({
         className="card__image"
       />
       <div className="card__data data">
-        <div className="data__info">
+        <div className="data__detail">
           <span className="data__date">{localDateFormat}</span>
           <FontAwesomeIcon icon={faCircleInfo} className="data__icon" />
         </div>
