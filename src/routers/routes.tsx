@@ -6,11 +6,13 @@ import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
 import RegisterPage from "../Pages/RegisterPage/RegisterPage";
 import HomePage from "../Pages/HomePage/HomePage";
 import PrivatePage from "../Pages/PrivatePage/PrivatePage";
+import NotFoundPage from "../Pages/NotFoundPage/NotFoundPage";
 
 const routes: RouteObject[] = [
   {
     path: "/",
     element: <App />,
+    errorElement: <NotFoundPage />,
     children: [
       { path: endpoints.login, element: <LoginPage /> },
       { path: endpoints.register, element: <RegisterPage /> },
