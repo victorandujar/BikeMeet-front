@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
 import { mockEvents } from "../../mocks/mocks";
-import { renderWithProviders } from "../../testUtils/renderWithProviders";
+import { renderRouterWithProviders } from "../../testUtils/renderWithProviders";
 import CardList from "./CardList";
 
 describe("Given a CardList component", () => {
@@ -8,7 +8,7 @@ describe("Given a CardList component", () => {
     test("Then it should show a card list with a Card, and a Card header name 'Sa costa'", () => {
       const headerText = "Sa costa";
 
-      renderWithProviders(<CardList />, {
+      renderRouterWithProviders(<CardList />, {
         event: { events: mockEvents.events },
       });
 

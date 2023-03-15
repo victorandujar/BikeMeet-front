@@ -50,6 +50,7 @@ const CardStyled = styled.article`
 
   .info {
     display: flex;
+    align-items: flex-start;
     gap: 2.5rem;
   }
 
@@ -61,6 +62,15 @@ const CardStyled = styled.article`
 
     &__data {
       font-size: 14px;
+    }
+  }
+
+  .buttons {
+    display: flex;
+    gap: 2.5rem;
+
+    &__icon {
+      font-size: 22px;
     }
   }
 `;

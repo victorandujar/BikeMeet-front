@@ -3,18 +3,23 @@ import {
   faPersonBiking,
   faRoad,
   faCircleInfo,
+  faTrash,
+  faPenToSquare,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CardStyled from "./CardStyled";
+import { useAppSelector } from "../../store/hooks";
 
 interface CardProps {
   event: EventDataStructure;
 }
 
 const Card = ({
-  event: { date, distance, image, name, type },
+  event: { date, distance, image, name, type, postedBy },
 }: CardProps): JSX.Element => {
   const localDateFormat = date.toLocaleString().split("T")[0];
+  const { id } = useAppSelector((state) => state.user);
+  const isMySpace = postedBy === id;
 
   return (
     <CardStyled className="card">
@@ -40,6 +45,16 @@ const Card = ({
             <FontAwesomeIcon icon={faRoad} className="event__icon" />
             <span className="event__data">{distance} km</span>
           </div>
+          {isMySpace && (
+            <div className="my-space__buttons buttons">
+              <button className="buttons__icon" aria-label="delete">
+                <FontAwesomeIcon icon={faTrash} />
+              </button>
+              <button className="buttons__icon" aria-label="modify">
+                <FontAwesomeIcon icon={faPenToSquare} />
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </CardStyled>
