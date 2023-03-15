@@ -1,5 +1,5 @@
 import { EventDataStructure, EventsData } from "../types/events/types";
-import { UiState } from "../types/ui/ui";
+import { UiState } from "../types/ui/types";
 
 export const mockEventSaCosta: EventDataStructure = {
   name: "Sa costa",

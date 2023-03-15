@@ -10,7 +10,7 @@ import {
   logoutUserActionCreator,
 } from "../../store/features/usersSlice/usersSlice";
 import { openModalActionCreator } from "../../store/features/uiSlice/uiSlice";
-import { ModalPayload } from "../../types/ui/ui";
+import { ModalPayload } from "../../types/ui/types";
 
 jest.mock("jwt-decode", () => jest.fn());
 const spy = jest.spyOn(store, "dispatch");
