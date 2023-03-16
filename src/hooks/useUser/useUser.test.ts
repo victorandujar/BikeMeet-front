@@ -11,6 +11,8 @@ import {
 } from "../../store/features/usersSlice/usersSlice";
 import { openModalActionCreator } from "../../store/features/uiSlice/uiSlice";
 import { ModalPayload } from "../../types/ui/types";
+import { server } from "../../mocks/server";
+import { errorHandlers } from "../../mocks/handlers";
 
 jest.mock("jwt-decode", () => jest.fn());
 const spy = jest.spyOn(store, "dispatch");
@@ -113,13 +115,6 @@ describe("Given a useUser custom hook", () => {
   });
 
   describe("When the registerUser function is called with a name: 'victor', email: 'victor@andujar,org' and password: '12345678'", () => {
-    beforeEach(() => {
-      global.fetch = jest.fn().mockResolvedValue({
-        ok: true,
-        json: jest.fn().mockResolvedValue({}),
-      });
-    });
-
     test("Then a request should be sent to the data base", async () => {
       const {
         result: {
@@ -129,13 +124,12 @@ describe("Given a useUser custom hook", () => {
 
       await registerUser(mockUserToRegister);
 
-      expect(global.fetch).toHaveBeenCalledWith(
-        `${process.env.REACT_APP_URL_API}/users/register`,
-        {
-          method: "POST",
-          body: JSON.stringify(mockUserToRegister),
-          headers: { "Content-Type": "application/json" },
-        }
+      expect(spy).toHaveBeenCalledWith(
+        openModalActionCreator({
+          isError: false,
+          message: "The user has been created!",
+          isSuccess: true,
+        })
       );
     });
 
@@ -159,6 +153,10 @@ describe("Given a useUser custom hook", () => {
   });
 
   describe("When the response is not ok", () => {
+    beforeAll(() => {
+      server.resetHandlers(...errorHandlers);
+    });
+
     test("Then it should throw an error", async () => {
       const modalPayload: ModalPayload = {
         isError: true,

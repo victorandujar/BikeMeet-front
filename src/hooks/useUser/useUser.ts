@@ -99,7 +99,6 @@ const useUser = () => {
           isSuccess: false,
         })
       );
-      return (error as Error).message;
     }
   };
 

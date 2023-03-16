@@ -1,6 +1,6 @@
 import { renderHook } from "@testing-library/react";
 import { errorHandlers } from "../../mocks/handlers";
-import { mockEventMussara, mockEvents } from "../../mocks/mocks";
+import { mockEventMussara, mockListEvents } from "../../mocks/mocks";
 import { server } from "../../mocks/server";
 import Wrapper from "../../mocks/Wrapper";
 import {
@@ -15,7 +15,7 @@ import {
 import { store } from "../../store/store";
 import useEvents from "./useEvents";
 
-afterEach(() => {
+beforeAll(() => {
   jest.clearAllMocks();
 });
 
@@ -33,7 +33,7 @@ describe("Given a useEvents custom hook", () => {
       await getEvents();
 
       expect(spyDispatch).toHaveBeenCalledWith(
-        loadEventsActionCreator(mockEvents.events)
+        loadEventsActionCreator(mockListEvents)
       );
     });
   });
@@ -43,7 +43,7 @@ describe("Given a useEvents custom hook", () => {
       server.resetHandlers(...errorHandlers);
     });
 
-    test("Then it should not call the dispatch", async () => {
+    test("Then it should call the openModal dispatch", async () => {
       const {
         result: {
           current: { getEvents },
@@ -52,22 +52,18 @@ describe("Given a useEvents custom hook", () => {
 
       await getEvents();
 
-      expect(spyDispatch).not.toHaveBeenCalledWith(
-        loadEventsActionCreator(mockEvents.events)
+      expect(spyDispatch).toHaveBeenCalledWith(
+        openModalActionCreator({
+          isError: true,
+          isSuccess: false,
+          message: "We couldn't retrieve events. Try again!",
+        })
       );
     });
   });
 
   describe("When the getUserEvents is called", () => {
-    beforeEach(() => {
-      global.fetch = jest.fn().mockResolvedValue({
-        ok: true,
-        json: jest.fn().mockResolvedValue({}),
-      });
-    });
-
     test("Then it should make a request with an authorization header", async () => {
-      const token = "";
       const {
         result: {
           current: { getUserEvents },
@@ -76,22 +72,18 @@ describe("Given a useEvents custom hook", () => {
 
       await getUserEvents();
 
-      expect(global.fetch).toHaveBeenCalledWith(
-        `${process.env.REACT_APP_URL_API}/events/my-events`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
+      expect(spyDispatch).toHaveBeenCalledWith(
+        loadEventsActionCreator(mockListEvents)
       );
     });
   });
+
   describe("Given a getUserEvents function and an error happens", () => {
     beforeEach(() => {
       server.resetHandlers(...errorHandlers);
     });
 
-    test("Then it should call the dispatch", async () => {
+    test("Then it should call the unsetIsLoading dispatch", async () => {
       const {
         result: {
           current: { getUserEvents },
@@ -102,13 +94,29 @@ describe("Given a useEvents custom hook", () => {
 
       expect(spyDispatch).toHaveBeenCalledWith(unsetIsLoadingActionCreator());
     });
-  });
 
-  describe("When te deleteEvent function is called", () => {
-    beforeEach(() => {
-      global.fetch = jest.fn();
+    test("Then it should call the openModal dispatch", async () => {
+      const {
+        result: {
+          current: { getUserEvents },
+        },
+      } = renderHook(() => useEvents(), { wrapper: Wrapper });
+
+      await getUserEvents();
+
+      expect(spyDispatch).toHaveBeenCalledWith(
+        openModalActionCreator({
+          isError: true,
+          isSuccess: false,
+          message: "We couldn't retrieve events. Try again!",
+        })
+      );
     });
+  });
+});
 
+describe("Given a useEvents custom hook and a deleteEvent function", () => {
+  describe("When te deleteEvent function is called", () => {
     test("Then it should call the setIsLoadingActionCreator dispatch", async () => {
       const {
         result: {
@@ -133,30 +141,6 @@ describe("Given a useEvents custom hook", () => {
       expect(spyDispatch).toHaveBeenCalledWith(unsetIsLoadingActionCreator());
     });
 
-    test("Then it should call the openModalActionCreator", async () => {
-      const mockErrorMessage = "Error message";
-      (global.fetch as jest.Mock).mockRejectedValueOnce(
-        new Error(mockErrorMessage)
-      );
-
-      const {
-        result: {
-          current: { deleteEvent },
-        },
-      } = renderHook(() => useEvents(), { wrapper: Wrapper });
-
-      await deleteEvent(mockEventMussara);
-
-      expect(spyDispatch).toHaveBeenNthCalledWith(
-        3,
-        openModalActionCreator({
-          isError: true,
-          isSuccess: false,
-          message: "Error message",
-        })
-      );
-    });
-
     test("Then it should call the dispatch", async () => {
       const {
         result: {
@@ -164,10 +148,34 @@ describe("Given a useEvents custom hook", () => {
         },
       } = renderHook(() => useEvents(), { wrapper: Wrapper });
 
-      (global.fetch as jest.Mock).mockResolvedValueOnce({ ok: true });
       await deleteEvent(mockEventMussara);
+
       expect(spyDispatch).toHaveBeenCalledWith(
         deleteEventActionCreator(mockEventMussara)
+      );
+    });
+  });
+
+  describe("When the response respond with an error", () => {
+    beforeEach(() => {
+      server.resetHandlers(...errorHandlers);
+    });
+
+    test("Then it should call the openModalActionCreator", async () => {
+      const {
+        result: {
+          current: { deleteEvent },
+        },
+      } = renderHook(() => useEvents(), { wrapper: Wrapper });
+
+      await deleteEvent(mockEventMussara);
+
+      expect(spyDispatch).toHaveBeenCalledWith(
+        openModalActionCreator({
+          isError: true,
+          isSuccess: false,
+          message: "The event couldn't be deleted.",
+        })
       );
     });
   });

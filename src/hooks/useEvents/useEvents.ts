@@ -32,6 +32,11 @@ const useEvents = () => {
           headers: { "Content-Type": "application/json; charset=UTF-8" },
         }
       );
+
+      if (!response.ok) {
+        throw new Error("We couldn't retrieve events. Try again!");
+      }
+
       const { events } = (await response.json()) as EventsData;
 
       dispatch(unsetIsLoadingActionCreator());
@@ -42,10 +47,9 @@ const useEvents = () => {
         openModalActionCreator({
           isError: true,
           isSuccess: false,
-          message: "We couldn't retrieve events. Try again!",
+          message: (error as Error).message,
         })
       );
-      return (error as Error).message;
     }
   }, [dispatch]);
 
@@ -61,6 +65,11 @@ const useEvents = () => {
           },
         }
       );
+
+      if (!response.ok) {
+        throw new Error("We couldn't retrieve events. Try again!");
+      }
+
       const { events } = (await response.json()) as EventsData;
 
       dispatch(unsetIsLoadingActionCreator());
@@ -93,7 +102,7 @@ const useEvents = () => {
         );
 
         if (!response.ok) {
-          throw new Error("We couldn't delete the selected event. Try again!");
+          throw new Error("The event couldn't be deleted.");
         }
 
         dispatch(unsetIsLoadingActionCreator());
@@ -104,7 +113,7 @@ const useEvents = () => {
           openModalActionCreator({
             isError: true,
             isSuccess: false,
-            message: (error as Error).message,
+            message: "The event couldn't be deleted.",
           })
         );
       }
