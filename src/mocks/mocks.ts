@@ -29,6 +29,11 @@ export const mockEventMussara: EventDataStructure = {
 
 export const mockEventsDelete: EventsDataStructure = [mockEventSaCosta];
 
+export const mockListEvents: EventsDataStructure = [
+  mockEventMussara,
+  mockEventSaCosta,
+];
+
 export const mockEvents: EventsData = {
   events: [mockEventMussara, mockEventSaCosta],
 };
