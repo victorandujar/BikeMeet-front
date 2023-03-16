@@ -83,10 +83,12 @@ const useEvents = () => {
       try {
         dispatch(setIsLoadingActionCreator());
         const response = await fetch(
-          `${process.env.REACT_APP_URL_API}${deleteEventEndpoint}${event.id}`,
+          `${process.env.REACT_APP_URL_API}${pathEvents}${deleteEventEndpoint}${event.id}`,
           {
             method: "DELETE",
-            headers: { "Content-Type": "application/json; charset=UTF-8" },
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
           }
         );
 
@@ -102,13 +104,12 @@ const useEvents = () => {
           openModalActionCreator({
             isError: true,
             isSuccess: false,
-            message: "We couldn't delete the selected event. Try again!",
+            message: (error as Error).message,
           })
         );
-        return (error as Error).message;
       }
     },
-    [dispatch]
+    [dispatch, token]
   );
 
   return { getEvents, getUserEvents, deleteEvent };
