@@ -1,4 +1,5 @@
 import { ReactElement } from "react";
+import ButtonCardsStyled from "./ButtonCardsStyled";
 
 interface ButtonProps {
   actionOnClick: () => void;
@@ -12,9 +13,9 @@ const ButtonCards = ({
   ariaLabel,
 }: ButtonProps): JSX.Element => {
   return (
-    <button onClick={actionOnClick} aria-label={ariaLabel}>
+    <ButtonCardsStyled onClick={actionOnClick} aria-label={ariaLabel}>
       {icon}
-    </button>
+    </ButtonCardsStyled>
   );
 };
 
