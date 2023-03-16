@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import useUser from "../../hooks/useUser/useUser";
-import Button from "../Button/Button";
+import Button from "../ButtonForm/ButtonForm";
 import LoginFormStyled from "./LoginFormStyled";
 
 const LoginForm = (): JSX.Element => {
