@@ -3,29 +3,27 @@ import {
   faPersonBiking,
   faRoad,
   faCircleInfo,
-  faTrash,
   faPenToSquare,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CardStyled from "./CardStyled";
 import { useAppSelector } from "../../store/hooks";
+import RemoveButton from "../RemoveButton/RemoveButton";
 
 interface CardProps {
   event: EventDataStructure;
 }
 
-const Card = ({
-  event: { date, distance, image, name, type, postedBy },
-}: CardProps): JSX.Element => {
-  const localDateFormat = date.toLocaleString().split("T")[0];
+const Card = ({ event }: CardProps): JSX.Element => {
+  const localDateFormat = event.date.toLocaleString().split("T")[0];
   const { id } = useAppSelector((state) => state.user);
-  const isMySpace = postedBy === id;
+  const isMySpace = event.postedBy === id;
 
   return (
     <CardStyled className="card">
       <img
-        src={image}
-        alt={name}
+        src={event.image}
+        alt={event.name}
         width={105}
         height={110}
         className="card__image"
@@ -35,21 +33,20 @@ const Card = ({
           <span className="data__date">{localDateFormat}</span>
           <FontAwesomeIcon icon={faCircleInfo} className="data__icon" />
         </div>
-        <h2 className="data__title">{name}</h2>
+        <h2 className="data__title">{event.name}</h2>
         <div className="data__info info">
           <div className="info__event event">
             <FontAwesomeIcon icon={faPersonBiking} className="event__icon" />
-            <span className="event__data">{type}</span>
+            <span className="event__data">{event.type}</span>
           </div>
           <div className="info__event event">
             <FontAwesomeIcon icon={faRoad} className="event__icon" />
-            <span className="event__data">{distance} km</span>
+            <span className="event__data">{event.distance} km</span>
           </div>
           {isMySpace && (
             <div className="my-space__buttons buttons">
-              <button className="buttons__icon" aria-label="delete">
-                <FontAwesomeIcon icon={faTrash} />
-              </button>
+              <RemoveButton aria-label="delete" event={event} />
+
               <button className="buttons__icon" aria-label="modify">
                 <FontAwesomeIcon icon={faPenToSquare} />
               </button>

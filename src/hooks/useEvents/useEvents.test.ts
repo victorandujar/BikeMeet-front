@@ -147,11 +147,12 @@ describe("Given a useEvents custom hook", () => {
 
       await deleteEvent(mockEventMussara);
 
-      expect(spyDispatch).toHaveBeenCalledWith(
+      expect(spyDispatch).toHaveBeenNthCalledWith(
+        3,
         openModalActionCreator({
           isError: true,
           isSuccess: false,
-          message: "We couldn't delete the selected event. Try again!",
+          message: "Error message",
         })
       );
     });
