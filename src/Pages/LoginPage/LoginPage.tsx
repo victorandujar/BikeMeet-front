@@ -1,7 +1,7 @@
 import LoginForm from "../../components/LoginForm/LoginForm";
 import LoginPageStyled from "./LoginPageStyled";
 import { useAppSelector } from "../../store/hooks";
-import { Navigate } from "react-router";
+import { Navigate } from "react-router-dom";
 
 const LoginPage = (): JSX.Element => {
   const { isLogged } = useAppSelector((state) => state.user);

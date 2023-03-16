@@ -1,5 +1,8 @@
 import { screen } from "@testing-library/react";
-import { renderRouterWithProviders } from "../../testUtils/renderWithProviders";
+import {
+  renderRouterWithProviders,
+  renderWithProviders,
+} from "../../testUtils/renderWithProviders";
 import { UserState } from "../../types/users/types";
 import Layout from "./Layout";
 
@@ -8,6 +11,12 @@ describe("Given a Layout component", () => {
     test("Then it should show a navigation bar", () => {
       const user: UserState = { email: "", id: "", isLogged: true, token: "" };
       renderRouterWithProviders({ user: user }, <Layout />);
+      renderRouterWithProviders({
+        ui: {
+          isLoading: true,
+          modal: { isError: false, isSuccess: false, message: "" },
+        },
+      });
 
       const navigationBar = screen.getByRole("navigation");
 
@@ -17,21 +26,11 @@ describe("Given a Layout component", () => {
     test("Then it should show a a heading with the text 'BIKEMEET'", () => {
       const headerText = "BIKEMEET";
 
-      renderRouterWithProviders(
-        {
-          ui: {
-            isLoading: true,
-            modal: { isError: false, isSuccess: false, message: "" },
-          },
-        },
-        <Layout />
-      );
+      renderWithProviders(<Layout />);
 
       const expectedLabel = screen.getByRole("heading", { name: headerText });
 
       expect(expectedLabel).toBeInTheDocument();
     });
-
-    test("Then if isLoading is false it should not show the Loader component", () => {});
   });
 });
