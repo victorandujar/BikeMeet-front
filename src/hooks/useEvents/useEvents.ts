@@ -107,6 +107,13 @@ const useEvents = () => {
 
         dispatch(unsetIsLoadingActionCreator());
         dispatch(deleteEventActionCreator(event));
+        dispatch(
+          openModalActionCreator({
+            isError: false,
+            isSuccess: true,
+            message: "The event has been deleted!",
+          })
+        );
       } catch (error) {
         dispatch(unsetIsLoadingActionCreator());
         dispatch(

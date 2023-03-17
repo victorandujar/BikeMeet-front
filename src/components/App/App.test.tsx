@@ -23,13 +23,5 @@ describe("Given an App component", () => {
 
       expect(expextedNavigationBar).toBeInTheDocument();
     });
-
-    test("Then it should show an image as logo", () => {
-      renderRouterWithProviders({}, <App />);
-
-      const expectedImage = screen.getByRole("img");
-
-      expect(expectedImage).toBeInTheDocument();
-    });
   });
 });

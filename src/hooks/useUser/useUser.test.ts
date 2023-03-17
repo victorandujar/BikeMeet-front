@@ -15,7 +15,7 @@ import { server } from "../../mocks/server";
 import { errorHandlers } from "../../mocks/handlers";
 
 jest.mock("jwt-decode", () => jest.fn());
-const spy = jest.spyOn(store, "dispatch");
+const spyDispatch = jest.spyOn(store, "dispatch");
 
 beforeAll(() => {
   jest.clearAllMocks();
@@ -60,7 +60,9 @@ describe("Given a useUser custom hook", () => {
 
       await loginUser(userCredentials);
 
-      expect(spy).toHaveBeenCalledWith(loginUserActionCreator(mockLoginUser));
+      expect(spyDispatch).toHaveBeenCalledWith(
+        loginUserActionCreator(mockLoginUser)
+      );
     });
 
     test("Then it should call the dispatch with the action openModalActionCreator", async () => {
@@ -78,7 +80,9 @@ describe("Given a useUser custom hook", () => {
 
       await loginUser(userCredentials);
 
-      expect(spy).toHaveBeenCalledWith(openModalActionCreator(modalPayload));
+      expect(spyDispatch).toHaveBeenCalledWith(
+        openModalActionCreator(modalPayload)
+      );
     });
 
     test("Then it should not call the dispatch", async () => {
@@ -90,7 +94,7 @@ describe("Given a useUser custom hook", () => {
 
       await loginUser(userCredentials);
 
-      expect(spy).not.toHaveBeenCalledWith(
+      expect(spyDispatch).not.toHaveBeenCalledWith(
         loginUserActionCreator(mockLoginUser)
       );
     });
@@ -110,12 +114,12 @@ describe("Given a useUser custom hook", () => {
 
       await logoutUser();
 
-      expect(spy).toHaveBeenCalledWith(logoutUserActionCreator());
+      expect(spyDispatch).toHaveBeenCalledWith(logoutUserActionCreator());
     });
   });
 
   describe("When the registerUser function is called with a name: 'victor', email: 'victor@andujar,org' and password: '12345678'", () => {
-    test("Then a request should be sent to the data base", async () => {
+    test("Then it should call the dispatch openModal", async () => {
       const {
         result: {
           current: { registerUser },
@@ -124,7 +128,7 @@ describe("Given a useUser custom hook", () => {
 
       await registerUser(mockUserToRegister);
 
-      expect(spy).toHaveBeenCalledWith(
+      expect(spyDispatch).toHaveBeenCalledWith(
         openModalActionCreator({
           isError: false,
           message: "The user has been created!",
@@ -148,7 +152,9 @@ describe("Given a useUser custom hook", () => {
 
       await registerUser(mockUserToRegister);
 
-      expect(spy).toHaveBeenCalledWith(openModalActionCreator(modalPayload));
+      expect(spyDispatch).toHaveBeenCalledWith(
+        openModalActionCreator(modalPayload)
+      );
     });
   });
 
@@ -176,7 +182,9 @@ describe("Given a useUser custom hook", () => {
         password: "",
       });
 
-      expect(spy).toHaveBeenCalledWith(openModalActionCreator(modalPayload));
+      expect(spyDispatch).toHaveBeenCalledWith(
+        openModalActionCreator(modalPayload)
+      );
     });
   });
 });

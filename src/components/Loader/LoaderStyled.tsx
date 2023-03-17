@@ -11,6 +11,7 @@ const LoadingStyled = styled.div`
   right: 0;
   bottom: 0;
   background-color: ${(props) => props.theme.colors.loaderBackGroundColor};
+  opacity: 80%;
 
   .pulsar {
     --uib-size: 40px;

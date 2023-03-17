@@ -2,7 +2,6 @@ import { screen } from "@testing-library/react";
 import { mockEventSaCosta } from "../../mocks/mocks";
 import { renderRouterWithProviders } from "../../testUtils/renderWithProviders";
 import Card from "./Card";
-import "react-router-dom";
 
 describe("Given a Card component", () => {
   describe("When it is rendered", () => {
