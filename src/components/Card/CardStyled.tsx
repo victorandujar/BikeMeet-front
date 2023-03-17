@@ -51,7 +51,8 @@ const CardStyled = styled.article`
   .info {
     display: flex;
     align-items: flex-start;
-    gap: 2.5rem;
+    width: 100%;
+    gap: 2.4rem;
   }
 
   .event {

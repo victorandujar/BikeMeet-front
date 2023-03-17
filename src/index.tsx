@@ -4,7 +4,6 @@ import { Provider } from "react-redux";
 import { store } from "./store/store";
 import { ThemeProvider } from "styled-components";
 import "@fontsource/inter";
-import "@fortawesome/fontawesome-free/css/all.min.css";
 import "@fontsource/montserrat";
 import GlobalStyles from "./styles/GlobalStyles";
 import theme from "./styles/Theme";
