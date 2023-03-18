@@ -7,6 +7,7 @@ import RegisterPage from "../Pages/RegisterPage/RegisterPage";
 import HomePage from "../Pages/HomePage/HomePage";
 import PrivatePage from "../Pages/PrivatePage/PrivatePage";
 import NotFoundPage from "../Pages/NotFoundPage/NotFoundPage";
+import CreatePage from "../Pages/CreatePage/CreatePage";
 
 const routes: RouteObject[] = [
   {
@@ -20,6 +21,10 @@ const routes: RouteObject[] = [
       {
         path: endpoints.mySpace,
         element: <ProtectedRoute element={<PrivatePage />} />,
+      },
+      {
+        path: endpoints.create,
+        element: <ProtectedRoute element={<CreatePage />} />,
       },
     ],
   },

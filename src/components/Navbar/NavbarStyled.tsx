@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 const NavbarStyled = styled.nav`
   display: flex;
-  gap: 62px;
   width: 100%;
   justify-content: space-between;
 
