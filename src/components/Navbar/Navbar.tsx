@@ -19,7 +19,9 @@ const Navbar = (): JSX.Element => {
       <NavLink to={"/my-space"}>
         <FontAwesomeIcon icon={faRectangleList} />
       </NavLink>
-      <FontAwesomeIcon icon={faPlus} />
+      <NavLink to={"/create"}>
+        <FontAwesomeIcon icon={faPlus} />
+      </NavLink>
       <FontAwesomeIcon icon={faRightFromBracket} onClick={logoutUser} />
     </NavbarStyled>
   );
