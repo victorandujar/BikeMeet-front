@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import Button from "../../components/ButtonForm/ButtonForm";
+import ButtonForm from "../../components/ButtonForm/ButtonForm";
 import NotFoundPageStyled from "./NotFoundPageStyled";
 
 const NotFoundPage = (): JSX.Element => {
@@ -243,7 +243,7 @@ const NotFoundPage = (): JSX.Element => {
         </span>
       </div>
       <NavLink to={"/"}>
-        <Button text={"Back to home page"} isDisabled={false} />
+        <ButtonForm text={"Back to home page"} isDisabled={false} />
       </NavLink>
     </NotFoundPageStyled>
   );
