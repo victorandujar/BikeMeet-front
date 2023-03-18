@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
 import { renderWithProviders } from "../../testUtils/renderWithProviders";
-import Button from "./ButtonForm";
+import ButtonForm from "./ButtonForm";
 
 describe("Given a Button component", () => {
   describe("When it is rendered", () => {
@@ -8,7 +8,7 @@ describe("Given a Button component", () => {
       const buttonText = "Log in";
 
       renderWithProviders(
-        <Button text={buttonText.toUpperCase()} isDisabled />
+        <ButtonForm text={buttonText.toUpperCase()} isDisabled />
       );
 
       const expectedButton = screen.getByRole("button", {

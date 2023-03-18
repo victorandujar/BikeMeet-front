@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import useUser from "../../hooks/useUser/useUser";
-import Button from "../ButtonForm/ButtonForm";
+import ButtonForm from "../ButtonForm/ButtonForm";
 import RegisterFormStyled from "./RegisterFormStyled";
 
 const RegisterForm = (): JSX.Element => {
@@ -91,7 +91,7 @@ const RegisterForm = (): JSX.Element => {
           onChange={handlePassword}
         />
       </div>
-      <Button text={"Sign up"} isDisabled={areFieldsEmpty} />
+      <ButtonForm text={"Sign up"} isDisabled={areFieldsEmpty} />
       <div className="link">
         Already a member? <Link to="/login">Log in</Link>
       </div>

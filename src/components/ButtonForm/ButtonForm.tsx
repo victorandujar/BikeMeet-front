@@ -5,8 +5,8 @@ interface ButtonProps {
   isDisabled: boolean;
 }
 
-const Button = ({ text, isDisabled }: ButtonProps): JSX.Element => {
+const ButtonForm = ({ text, isDisabled }: ButtonProps): JSX.Element => {
   return <ButtonFormStyled disabled={isDisabled}>{text}</ButtonFormStyled>;
 };
 
-export default Button;
+export default ButtonForm;

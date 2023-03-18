@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import useUser from "../../hooks/useUser/useUser";
-import Button from "../ButtonForm/ButtonForm";
+import ButtonForm from "../ButtonForm/ButtonForm";
 import LoginFormStyled from "./LoginFormStyled";
 
 const LoginForm = (): JSX.Element => {
@@ -63,7 +63,7 @@ const LoginForm = (): JSX.Element => {
           onChange={handlePassword}
         />
       </div>
-      <Button text={"Log in"} isDisabled={areFieldsEmpty} />
+      <ButtonForm text={"Log in"} isDisabled={areFieldsEmpty} />
       <div className="link">
         Not a member? <Link to="/sign-up">Sign up</Link>
       </div>
