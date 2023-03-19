@@ -9,6 +9,7 @@ const routes = {
   getEvents: "/",
   myEvents: "/my-events",
   delete: "/delete/",
+  create: "/create",
   id: "asdjkdhskdsjka",
 };
 
