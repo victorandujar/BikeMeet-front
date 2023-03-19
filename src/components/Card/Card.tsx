@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CardStyled from "./CardStyled";
 import { useAppSelector } from "../../store/hooks";
 import RemoveButton from "../RemoveButton/RemoveButton";
+import { Link } from "react-router-dom";
 
 interface CardProps {
   event: EventDataStructure;
@@ -31,7 +32,9 @@ const Card = ({ event }: CardProps): JSX.Element => {
       <div className="card__data data">
         <div className="data__detail">
           <span className="data__date">{localDateFormat}</span>
-          <FontAwesomeIcon icon={faCircleInfo} className="data__icon" />
+          <Link to={`/detail`}>
+            <FontAwesomeIcon icon={faCircleInfo} className="data__icon" />
+          </Link>
         </div>
         <h2 className="data__title">{event.name}</h2>
         <div className="data__info info">
