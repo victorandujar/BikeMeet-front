@@ -3,6 +3,7 @@ interface Routes {
   register: string;
   mySpace: string;
   create: string;
+  detail: string;
 }
 
 const endpoints: Routes = {
@@ -10,6 +11,7 @@ const endpoints: Routes = {
   register: "/sign-up",
   mySpace: "/my-space",
   create: "/create",
+  detail: "/detail",
 };
 
 export default endpoints;
