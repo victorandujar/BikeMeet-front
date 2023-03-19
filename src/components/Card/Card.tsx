@@ -22,7 +22,7 @@ const Card = ({ event }: CardProps): JSX.Element => {
   return (
     <CardStyled className="card">
       <img
-        src={event.image}
+        src={event.image.toString()}
         alt={event.name}
         width={105}
         height={110}

@@ -7,7 +7,7 @@ const formData = (event: EventCreateStructure) => {
   data.append("type", event.type);
   data.append("date", event.date.toLocaleString());
   data.append("description", event.description);
-  data.append("image", event.image!);
+  data.append("image", event.image);
 
   return data;
 };
