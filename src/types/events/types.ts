@@ -1,14 +1,15 @@
-export interface EventDataStructure {
+export interface EventCreateStructure {
   name: string;
-  distance: number;
+  distance: string;
   type: string;
   date: Date | string;
   description: string;
-  image: string;
+  image: File | string;
+}
+export interface EventDataStructure extends EventCreateStructure {
   id: string;
   postedBy: string;
 }
-
 export interface EventsData {
   events: EventsDataStructure;
 }

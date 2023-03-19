@@ -1,6 +1,10 @@
 import { renderHook } from "@testing-library/react";
 import { errorHandlers } from "../../mocks/handlers";
-import { mockEventMussara, mockListEvents } from "../../mocks/mocks";
+import {
+  mockEventCreate,
+  mockEventMussara,
+  mockListEvents,
+} from "../../mocks/mocks";
 import { server } from "../../mocks/server";
 import Wrapper from "../../mocks/Wrapper";
 import {
@@ -116,7 +120,7 @@ describe("Given a useEvents custom hook", () => {
 });
 
 describe("Given a useEvents custom hook and a deleteEvent function", () => {
-  describe("When te deleteEvent function is called", () => {
+  describe("When the deleteEvent function is called", () => {
     test("Then it should call the setIsLoadingActionCreator dispatch", async () => {
       const {
         result: {
@@ -175,6 +179,46 @@ describe("Given a useEvents custom hook and a deleteEvent function", () => {
           isError: true,
           isSuccess: false,
           message: "The event couldn't be deleted.",
+        })
+      );
+    });
+  });
+});
+
+describe("Given a useEvents custom hook and the createEvent function", () => {
+  describe("When the createEvent function is called", () => {
+    test("Then it should call the openModal action creator", async () => {
+      const {
+        result: {
+          current: { createEvent },
+        },
+      } = renderHook(() => useEvents(), { wrapper: Wrapper });
+
+      await createEvent(mockEventCreate);
+
+      expect(spyDispatch).toHaveBeenCalled();
+    });
+  });
+
+  describe("When the response respond with an error", () => {
+    beforeEach(() => {
+      server.resetHandlers(...errorHandlers);
+    });
+
+    test("Then it should call the openModalActionCreator", async () => {
+      const {
+        result: {
+          current: { createEvent },
+        },
+      } = renderHook(() => useEvents(), { wrapper: Wrapper });
+
+      await createEvent(mockEventCreate);
+
+      expect(spyDispatch).toHaveBeenCalledWith(
+        openModalActionCreator({
+          isError: true,
+          isSuccess: false,
+          message: "The event couldn't be created.",
         })
       );
     });

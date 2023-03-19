@@ -1,4 +1,5 @@
 import {
+  EventCreateStructure,
   EventDataStructure,
   EventsData,
   EventsDataStructure,
@@ -9,8 +10,8 @@ export const mockEventSaCosta: EventDataStructure = {
   name: "Sa costa",
   date: "20/02/03",
   description: "asdjklksadhdashdjk",
-  distance: 123,
-  image: "sacosta.png",
+  distance: "123",
+  image: "",
   type: "Gravel",
   id: "sajkhdasdjkh",
   postedBy: "2392382308901",
@@ -20,11 +21,22 @@ export const mockEventMussara: EventDataStructure = {
   name: "Mussara",
   date: "20/02/03",
   description: "asdjklksadhdashdjk",
-  distance: 123,
+  distance: "123",
   image: "sacosta.png",
   type: "Road",
   id: "asdjkdhskdsjka",
   postedBy: "2392382308901",
+};
+
+export const mockEventCreate: EventCreateStructure = {
+  name: "Sa Barava",
+  distance: "123",
+  type: "Road",
+  date: "12/02/23",
+  description: "lkdngjkfdabgjkdgbdsgnb",
+  image: new File(["event"], "event.jpg", {
+    type: "image/jpg",
+  }),
 };
 
 export const mockEventsDelete: EventsDataStructure = [mockEventSaCosta];
