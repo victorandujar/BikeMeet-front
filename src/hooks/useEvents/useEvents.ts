@@ -1,6 +1,8 @@
 import { useCallback } from "react";
+
 import {
   deleteEventActionCreator,
+  loadEventActionCreator,
   loadEventsActionCreator,
 } from "../../store/features/eventsSlice/eventsSlice";
 import {
@@ -22,6 +24,7 @@ const getEventsEndpoint = "/";
 const getUserEventsEndpoint = "/my-events";
 const deleteEventEndpoint = "/delete/";
 const createEventEndpoint = "/create";
+const eventByIdEndpoint = "/detail/";
 
 const useEvents = () => {
   const dispatch = useAppDispatch();
@@ -98,7 +101,7 @@ const useEvents = () => {
       try {
         dispatch(setIsLoadingActionCreator());
         const response = await fetch(
-          `${process.env.REACT_APP_URL_API}${pathEvents}${deleteEventEndpoint}${event.id}`,
+          `${apiUrl}${pathEvents}${deleteEventEndpoint}${event.id}`,
           {
             method: "DELETE",
             headers: {
@@ -140,20 +143,13 @@ const useEvents = () => {
         dispatch(setIsLoadingActionCreator());
         const data = formData(event);
 
-        const response = await fetch(
-          `${process.env.REACT_APP_URL_API}${pathEvents}${createEventEndpoint}`,
-          {
-            method: "POST",
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-            body: data,
-          }
-        );
-
-        if (!response.ok) {
-          throw new Error("The event couldn't be created.");
-        }
+        await fetch(`${apiUrl}${pathEvents}${createEventEndpoint}`, {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          body: data,
+        });
 
         dispatch(unsetIsLoadingActionCreator());
         dispatch(
@@ -177,7 +173,49 @@ const useEvents = () => {
     [dispatch, token]
   );
 
-  return { getEvents, getUserEvents, deleteEvent, createEvent };
+  const findEventById = useCallback(
+    async (idEvent: string) => {
+      try {
+        dispatch(setIsLoadingActionCreator());
+        const response = await fetch(
+          `${apiUrl}${pathEvents}${eventByIdEndpoint}${idEvent}`,
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("We couldn't retrieve events. Try again!");
+        }
+
+        const { event } = (await response.json()) as EventsData;
+
+        dispatch(unsetIsLoadingActionCreator());
+        dispatch(loadEventActionCreator(event));
+      } catch (error) {
+        dispatch(unsetIsLoadingActionCreator());
+        dispatch(
+          openModalActionCreator({
+            isError: true,
+            isSuccess: false,
+            message: "No event found to show.",
+          })
+        );
+      }
+    },
+    [dispatch, token]
+  );
+
+  return {
+    getEvents,
+    getUserEvents,
+    deleteEvent,
+    createEvent,
+    findEventById,
+  };
 };
 
 export default useEvents;
