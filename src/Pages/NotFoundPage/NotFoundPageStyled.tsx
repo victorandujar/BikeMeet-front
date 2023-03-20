@@ -5,9 +5,10 @@ const NotFoundPageStyled = styled.div`
   flex-direction: column;
   align-items: center;
   font-family: inherit;
-  min-width: 100%;
+  width: 100%;
   min-height: 100vh;
   justify-content: space-around;
+  text-align: center;
 
   .text {
     display: flex;

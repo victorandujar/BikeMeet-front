@@ -9,6 +9,7 @@ const ButtonFormStyled = styled.button`
   text-transform: uppercase;
   border: none;
   border-radius: 12px;
+  padding: 0 50px;
 
   :disabled {
     opacity: 70%;

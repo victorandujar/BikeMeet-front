@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const LoadingStyled = styled.div`
   min-width: auto;
-  height: 100%;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
