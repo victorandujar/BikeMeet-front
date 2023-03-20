@@ -1,4 +1,4 @@
-import { act, fireEvent, screen } from "@testing-library/react";
+import { act, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { mockEventCreate } from "../../mocks/mocks";
 import {
@@ -106,11 +106,14 @@ describe("Given a CreateForm componente", () => {
           )
       );
 
+      await act(async () => await userEvent.click(dateInputPlaceholder));
+
       await act(
         async () =>
-          await fireEvent.change(dateInputPlaceholder, {
-            target: { value: "12/02/23" },
-          })
+          await userEvent.type(
+            dateInputPlaceholder,
+            mockEventCreate.date.toString()
+          )
       );
 
       await act(

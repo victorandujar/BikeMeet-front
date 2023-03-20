@@ -11,7 +11,7 @@ import { userReducer } from "./features/usersSlice/usersSlice";
 
 const rootReducer = combineReducers({
   user: userReducer,
-  event: eventsReducer,
+  events: eventsReducer,
   ui: uiReducer,
 });
 

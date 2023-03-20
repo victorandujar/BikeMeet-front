@@ -5,6 +5,7 @@ import {
   EventsDataStructure,
 } from "../types/events/types";
 import { UiState } from "../types/ui/types";
+import FormDataPolyfill from "form-data";
 
 export const mockEventSaCosta: EventDataStructure = {
   name: "Sa costa",
@@ -34,9 +35,7 @@ export const mockEventCreate: EventCreateStructure = {
   type: "Road",
   date: "12/02/23",
   description: "lkdngjkfdabgjkdgbdsgnb",
-  image: new File(["event"], "event.jpg", {
-    type: "image/jpg",
-  }),
+  image: "dflkjdksfndfdk",
 };
 
 export const mockEventsDelete: EventsDataStructure = [mockEventSaCosta];
@@ -48,6 +47,7 @@ export const mockListEvents: EventsDataStructure = [
 
 export const mockEvents: EventsData = {
   events: [mockEventMussara, mockEventSaCosta],
+  event: mockEventMussara,
 };
 
 export const mockIsLoadingState: UiState = {
@@ -76,4 +76,15 @@ export const preloadedStateLoggedIn = {
     isLogged: true,
     token: "",
   },
+};
+
+export const getMockNewEvent = (): FormDataPolyfill => {
+  const data = new FormDataPolyfill();
+  data.append("name", mockEventCreate.name);
+  data.append("distance", mockEventCreate.distance);
+  data.append("type", mockEventCreate.type);
+  data.append("date", mockEventCreate.date.toLocaleString());
+  data.append("description", mockEventCreate.description);
+  data.append("image", mockEventCreate.image);
+  return data;
 };

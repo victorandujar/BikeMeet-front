@@ -3,7 +3,7 @@ import Card from "../Card/Card";
 import CardListStyled from "./CardListStyled";
 
 const CardList = (): JSX.Element => {
-  const events = useAppSelector((state) => state.event.events);
+  const events = useAppSelector((state) => state.events.events);
 
   return (
     <CardListStyled>

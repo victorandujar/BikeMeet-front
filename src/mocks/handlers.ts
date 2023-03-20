@@ -8,9 +8,10 @@ const routes = {
   events: "/events",
   getEvents: "/",
   myEvents: "/my-events",
-  delete: "/delete/",
+  delete: "/delete",
   create: "/create",
-  id: "asdjkdhskdsjka",
+  detail: "/detail",
+  id: "/:id",
 };
 
 export const handlers = [
@@ -18,12 +19,10 @@ export const handlers = [
     `${process.env.REACT_APP_URL_API}${routes.user}${routes.login}`,
     (req, res, ctx) => res(ctx.status(200), ctx.json({ token: "vik27634fvj" }))
   ),
-
   rest.post(
     `${process.env.REACT_APP_URL_API}${routes.user}${routes.register}`,
     (req, res, ctx) => res(ctx.status(200))
   ),
-
   rest.get(
     `${process.env.REACT_APP_URL_API}${routes.events}${routes.getEvents}`,
     (req, res, ctx) => res(ctx.status(200), ctx.json(mockEvents))
@@ -33,10 +32,13 @@ export const handlers = [
     `${process.env.REACT_APP_URL_API}${routes.events}${routes.myEvents}`,
     (req, res, ctx) => res(ctx.status(200), ctx.json(mockEvents))
   ),
-
   rest.delete(
     `${process.env.REACT_APP_URL_API}${routes.events}${routes.delete}${routes.id}`,
     (req, res, ctx) => res(ctx.status(200))
+  ),
+  rest.get(
+    `${process.env.REACT_APP_URL_API}${routes.events}${routes.detail}${routes.id}`,
+    (req, res, ctx) => res(ctx.status(200), ctx.json(mockEvents))
   ),
 ];
 
@@ -45,19 +47,20 @@ export const errorHandlers = [
     `${process.env.REACT_APP_URL_API}${routes.events}${routes.getEvents}`,
     (req, res, ctx) => res(ctx.status(404))
   ),
-
   rest.get(
     `${process.env.REACT_APP_URL_API}${routes.events}${routes.myEvents}`,
     (req, res, ctx) => res(ctx.status(400))
   ),
-
   rest.post(
     `${process.env.REACT_APP_URL_API}${routes.user}${routes.register}`,
     (req, res, ctx) => res(ctx.status(400))
   ),
-
   rest.delete(
     `${process.env.REACT_APP_URL_API}${routes.events}${routes.delete}${routes.id}`,
+    (req, res, ctx) => res(ctx.status(400))
+  ),
+  rest.get(
+    `${process.env.REACT_APP_URL_API}${routes.events}${routes.detail}${routes.id}`,
     (req, res, ctx) => res(ctx.status(400))
   ),
 ];
