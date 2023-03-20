@@ -7,10 +7,20 @@ import {
 
 const initialState: EventsData = {
   events: [],
+  event: {
+    date: "",
+    description: "",
+    distance: "",
+    id: "",
+    image: "",
+    name: "",
+    postedBy: "",
+    type: "",
+  },
 };
 
 const eventsSlice = createSlice({
-  name: "event",
+  name: "events",
   initialState,
   reducers: {
     loadEvents: (
@@ -23,18 +33,25 @@ const eventsSlice = createSlice({
     deleteEvent: (
       currentEventState,
       action: PayloadAction<EventDataStructure>
-    ) => {
-      const newEvents = currentEventState.events.filter(
+    ) => ({
+      ...currentEventState,
+      events: currentEventState.events.filter(
         (event) => event.id !== action.payload.id
-      );
-
-      return { events: newEvents };
-    },
+      ),
+    }),
+    loadEvent: (
+      currentEventState,
+      action: PayloadAction<EventDataStructure>
+    ) => ({
+      ...currentEventState,
+      event: action.payload,
+    }),
   },
 });
 
 export const {
   loadEvents: loadEventsActionCreator,
   deleteEvent: deleteEventActionCreator,
+  loadEvent: loadEventActionCreator,
 } = eventsSlice.actions;
 export const eventsReducer = eventsSlice.reducer;
