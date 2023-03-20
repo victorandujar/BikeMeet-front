@@ -93,7 +93,10 @@ const RegisterForm = (): JSX.Element => {
       </div>
       <ButtonForm text={"Sign up"} isDisabled={areFieldsEmpty} />
       <div className="link">
-        Already a member? <Link to="/login">Log in</Link>
+        Already a member?{" "}
+        <Link to="/login" className="link__text">
+          Log in
+        </Link>
       </div>
     </RegisterFormStyled>
   );
