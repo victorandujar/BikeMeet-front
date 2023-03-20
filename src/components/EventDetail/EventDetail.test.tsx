@@ -18,7 +18,10 @@ describe("Given a EventDetail component", () => {
     test("Then it should show a header with the text 'Mussara'", () => {
       const textHeader = mockEventMussara.name;
 
-      renderRouterWithProviders({}, <EventDetail event={mockEventMussara} />);
+      renderRouterWithProviders(
+        { events: { events: [], event: mockEventMussara } },
+        <EventDetail event={mockEventMussara} />
+      );
 
       const expectedHeader = screen.getByRole("heading", { name: textHeader });
 

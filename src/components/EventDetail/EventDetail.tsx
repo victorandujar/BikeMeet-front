@@ -1,4 +1,3 @@
-import { EventDataStructure } from "../../types/events/types";
 import {
   faPersonBiking,
   faRoad,
@@ -9,12 +8,15 @@ import EventDetailStyled from "./EventDetailStyled";
 import ButtonForm from "../ButtonForm/ButtonForm";
 import { Link } from "react-router-dom";
 
+import { EventDataStructure } from "../../types/events/types";
+
 interface DetailProps {
   event: EventDataStructure;
 }
 
 const EventDetail = ({ event }: DetailProps): JSX.Element => {
   const localDateFormat = event.date.toLocaleString().split("T")[0];
+
   return (
     <EventDetailStyled className="event-detail">
       <img

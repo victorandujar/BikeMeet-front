@@ -8,6 +8,7 @@ import HomePage from "../Pages/HomePage/HomePage";
 import PrivatePage from "../Pages/PrivatePage/PrivatePage";
 import NotFoundPage from "../Pages/NotFoundPage/NotFoundPage";
 import CreatePage from "../Pages/CreatePage/CreatePage";
+import DetailPage from "../Pages/DetailPage/DetailPage";
 
 const routes: RouteObject[] = [
   {
@@ -25,6 +26,10 @@ const routes: RouteObject[] = [
       {
         path: endpoints.create,
         element: <ProtectedRoute element={<CreatePage />} />,
+      },
+      {
+        path: endpoints.detail,
+        element: <ProtectedRoute element={<DetailPage />} />,
       },
     ],
   },
