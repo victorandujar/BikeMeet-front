@@ -11,6 +11,7 @@ const EventDetailStyled = styled.article`
     &__image {
       border-radius: 5px;
       object-fit: cover;
+      width: 100%;
     }
 
     &__title {
