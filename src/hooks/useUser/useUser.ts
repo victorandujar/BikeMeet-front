@@ -17,9 +17,11 @@ import {
   setIsLoadingActionCreator,
   unsetIsLoadingActionCreator,
 } from "../../store/features/uiSlice/uiSlice";
+import { useNavigate } from "react-router-dom";
 
 const useUser = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const { removeToken } = useToken();
 
@@ -91,6 +93,8 @@ const useUser = () => {
           isSuccess: true,
         })
       );
+
+      navigate("/login");
     } catch (error) {
       dispatch(
         openModalActionCreator({

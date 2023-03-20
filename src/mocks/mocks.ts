@@ -33,9 +33,9 @@ export const mockEventCreate: EventCreateStructure = {
   name: "Sa Barava",
   distance: "123",
   type: "Road",
-  date: "12/02/23",
+  date: "2023-03-31T00:00",
   description: "lkdngjkfdabgjkdgbdsgnb",
-  image: "dflkjdksfndfdk",
+  image: "image.jpg",
 };
 
 export const mockEventsDelete: EventsDataStructure = [mockEventSaCosta];
@@ -47,7 +47,16 @@ export const mockListEvents: EventsDataStructure = [
 
 export const mockEvents: EventsData = {
   events: [mockEventMussara, mockEventSaCosta],
-  event: mockEventMussara,
+  event: {
+    name: "Mussara",
+    date: "20/02/03",
+    description: "asdjklksadhdashdjk",
+    distance: "123",
+    image: "sacosta.png",
+    type: "Road",
+    id: "asdjkdhskdsjka",
+    postedBy: "2392382308901",
+  },
 };
 
 export const mockIsLoadingState: UiState = {
