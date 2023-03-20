@@ -48,9 +48,7 @@ const CreateForm = (): JSX.Element => {
   const handleImage = ({
     target: { files },
   }: React.ChangeEvent<HTMLInputElement>) => {
-    if (files !== null) {
-      setImage(files[0]);
-    }
+    setImage(files?.[0]!);
   };
 
   const onSubmitHandler = async (event: React.FormEvent<HTMLFormElement>) => {

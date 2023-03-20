@@ -16,7 +16,7 @@ const CardStyled = styled.article`
       object-fit: cover;
       border-radius: 16px 16px 0 0;
       width: 100%;
-      height: 200px;
+      height: 12.5rem;
     }
   }
 
@@ -57,15 +57,18 @@ const CardStyled = styled.article`
 
     &__data {
       display: flex;
-      gap: 2.5rem;
+      gap: 0.8rem;
     }
   }
 
   .event {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 6px;
     font-size: 18px;
+    width: 55px;
 
     &__data {
       font-size: 14px;
@@ -74,7 +77,7 @@ const CardStyled = styled.article`
 
   .buttons {
     display: flex;
-    gap: 2.5rem;
+    gap: 1.5rem;
 
     &__icon {
       font-size: 22px;

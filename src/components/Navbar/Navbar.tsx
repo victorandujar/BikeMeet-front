@@ -14,15 +14,19 @@ const Navbar = (): JSX.Element => {
   return (
     <NavbarStyled className="navigation-bar">
       <NavLink to={"/"}>
-        <FontAwesomeIcon icon={faHouseChimney} />
+        <FontAwesomeIcon icon={faHouseChimney} title="home" />
       </NavLink>
       <NavLink to={"/my-space"}>
-        <FontAwesomeIcon icon={faRectangleList} />
+        <FontAwesomeIcon icon={faRectangleList} title="list" />
       </NavLink>
       <NavLink to={"/create"}>
-        <FontAwesomeIcon icon={faPlus} />
+        <FontAwesomeIcon icon={faPlus} title="create" />
       </NavLink>
-      <FontAwesomeIcon icon={faRightFromBracket} onClick={logoutUser} />
+      <FontAwesomeIcon
+        icon={faRightFromBracket}
+        onClick={logoutUser}
+        title="logout"
+      />
     </NavbarStyled>
   );
 };

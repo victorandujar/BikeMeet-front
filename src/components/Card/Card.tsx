@@ -38,11 +38,19 @@ const Card = ({ event }: CardProps): JSX.Element => {
         <div className="data__info info">
           <div className="info__data">
             <div className="info__event event">
-              <FontAwesomeIcon icon={faPersonBiking} className="event__icon" />
+              <FontAwesomeIcon
+                icon={faPersonBiking}
+                className="event__icon"
+                title="type"
+              />
               <span className="event__data">{event.type}</span>
             </div>
             <div className="info__event event">
-              <FontAwesomeIcon icon={faRoad} className="event__icon" />
+              <FontAwesomeIcon
+                icon={faRoad}
+                className="event__icon"
+                title="distance"
+              />
               <span className="event__data">{event.distance} km</span>
             </div>
           </div>
@@ -51,7 +59,7 @@ const Card = ({ event }: CardProps): JSX.Element => {
               <RemoveButton aria-label="delete" event={event} />
 
               <button className="buttons__icon" aria-label="modify">
-                <FontAwesomeIcon icon={faPenToSquare} />
+                <FontAwesomeIcon icon={faPenToSquare} title="modify" />
               </button>
             </div>
           )}

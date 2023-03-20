@@ -13,7 +13,13 @@ const DetailButton = ({ event }: DetailButtonProps): JSX.Element => {
 
   return (
     <ButtonCards
-      icon={<FontAwesomeIcon icon={faCircleInfo} className="data__icon" />}
+      icon={
+        <FontAwesomeIcon
+          icon={faCircleInfo}
+          className="data__icon"
+          title="info"
+        />
+      }
       actionOnClick={() => {
         navigate(`/detail/${event.id}`);
       }}

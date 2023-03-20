@@ -13,7 +13,7 @@ const RemoveButton = ({ event }: RemoveButtonProps): JSX.Element => {
   return (
     <ButtonCards
       actionOnClick={() => deleteEvent(event)}
-      icon={<FontAwesomeIcon icon={faTrash} />}
+      icon={<FontAwesomeIcon icon={faTrash} title="delete" />}
       ariaLabel={"delete"}
     />
   );

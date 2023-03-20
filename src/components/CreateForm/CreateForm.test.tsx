@@ -132,6 +132,7 @@ describe("Given a CreateForm componente", () => {
           )
       );
 
+      await act(async () => await userEvent.click(imageInputPlaceholder));
       await act(
         async () => await userEvent.upload(imageInputPlaceholder, picture)
       );

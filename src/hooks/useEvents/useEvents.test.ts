@@ -21,12 +21,19 @@ import {
 import { store } from "../../store/store";
 import { EventDataStructure } from "../../types/events/types";
 import useEvents from "./useEvents";
+import "react-router-dom";
 
 beforeAll(() => {
   jest.clearAllMocks();
 });
 
 const spyDispatch = jest.spyOn(store, "dispatch");
+
+const mockedUsedNavigate = jest.fn();
+jest.mock("react-router-dom", () => ({
+  ...jest.requireActual("react-router-dom"),
+  useNavigate: () => mockedUsedNavigate,
+}));
 
 describe("Given a useEvents custom hook", () => {
   describe("When the getEvents function is called", () => {

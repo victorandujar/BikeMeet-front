@@ -1,4 +1,5 @@
 import { useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 
 import {
   deleteEventActionCreator,
@@ -29,6 +30,7 @@ const eventByIdEndpoint = "/detail/";
 const useEvents = () => {
   const dispatch = useAppDispatch();
   const { token } = useAppSelector((state) => state.user);
+  const navigate = useNavigate();
 
   const getEvents = useCallback(async () => {
     try {
@@ -159,6 +161,7 @@ const useEvents = () => {
             message: "The event has been created!",
           })
         );
+        navigate("/my-space");
       } catch (error) {
         dispatch(unsetIsLoadingActionCreator());
         dispatch(
@@ -170,7 +173,7 @@ const useEvents = () => {
         );
       }
     },
-    [dispatch, token]
+    [dispatch, navigate, token]
   );
 
   const findEventById = useCallback(
