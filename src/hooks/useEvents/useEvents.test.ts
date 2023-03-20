@@ -1,6 +1,7 @@
 import { renderHook } from "@testing-library/react";
 import { errorHandlers } from "../../mocks/handlers";
 import {
+  getMockNewEvent,
   mockEventCreate,
   mockEventMussara,
   mockListEvents,
@@ -9,6 +10,7 @@ import { server } from "../../mocks/server";
 import Wrapper from "../../mocks/Wrapper";
 import {
   deleteEventActionCreator,
+  loadEventActionCreator,
   loadEventsActionCreator,
 } from "../../store/features/eventsSlice/eventsSlice";
 import {
@@ -17,6 +19,7 @@ import {
   unsetIsLoadingActionCreator,
 } from "../../store/features/uiSlice/uiSlice";
 import { store } from "../../store/store";
+import { EventDataStructure } from "../../types/events/types";
 import useEvents from "./useEvents";
 
 beforeAll(() => {
@@ -194,9 +197,11 @@ describe("Given a useEvents custom hook and the createEvent function", () => {
         },
       } = renderHook(() => useEvents(), { wrapper: Wrapper });
 
-      await createEvent(mockEventCreate);
+      const newEvent = getMockNewEvent();
 
-      expect(spyDispatch).toHaveBeenCalled();
+      await createEvent(newEvent as unknown as EventDataStructure);
+
+      expect(spyDispatch).toHaveBeenCalledWith(unsetIsLoadingActionCreator());
     });
   });
 
@@ -219,6 +224,49 @@ describe("Given a useEvents custom hook and the createEvent function", () => {
           isError: true,
           isSuccess: false,
           message: "The event couldn't be created.",
+        })
+      );
+    });
+  });
+});
+
+describe("Given a useEvents hook and the findEventById function", () => {
+  describe("When the findEventById is called", () => {
+    test("Then it should call the loadEvent dispatch", async () => {
+      const {
+        result: {
+          current: { findEventById },
+        },
+      } = renderHook(() => useEvents(), { wrapper: Wrapper });
+
+      await findEventById(mockEventMussara.id);
+
+      expect(spyDispatch).toHaveBeenNthCalledWith(
+        3,
+        loadEventActionCreator(mockEventMussara)
+      );
+    });
+  });
+
+  describe("When the response respond with an error", () => {
+    beforeEach(() => {
+      server.resetHandlers(...errorHandlers);
+    });
+
+    test("Then it should call the openModal action creator with an error", async () => {
+      const {
+        result: {
+          current: { findEventById },
+        },
+      } = renderHook(() => useEvents(), { wrapper: Wrapper });
+
+      await findEventById(mockEventMussara.id);
+
+      expect(spyDispatch).toHaveBeenCalledWith(
+        openModalActionCreator({
+          isError: true,
+          isSuccess: false,
+          message: "No event found to show.",
         })
       );
     });
