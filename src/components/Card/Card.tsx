@@ -36,13 +36,15 @@ const Card = ({ event }: CardProps): JSX.Element => {
         </div>
         <h2 className="data__title">{event.name}</h2>
         <div className="data__info info">
-          <div className="info__event event">
-            <FontAwesomeIcon icon={faPersonBiking} className="event__icon" />
-            <span className="event__data">{event.type}</span>
-          </div>
-          <div className="info__event event">
-            <FontAwesomeIcon icon={faRoad} className="event__icon" />
-            <span className="event__data">{event.distance} km</span>
+          <div className="info__data">
+            <div className="info__event event">
+              <FontAwesomeIcon icon={faPersonBiking} className="event__icon" />
+              <span className="event__data">{event.type}</span>
+            </div>
+            <div className="info__event event">
+              <FontAwesomeIcon icon={faRoad} className="event__icon" />
+              <span className="event__data">{event.distance} km</span>
+            </div>
           </div>
           {isMySpace && (
             <div className="my-space__buttons buttons">

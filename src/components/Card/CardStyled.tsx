@@ -30,6 +30,7 @@ const CardStyled = styled.article`
 
     &__detail {
       display: flex;
+      align-items: center;
       width: 100%;
       justify-content: space-between;
     }
@@ -52,7 +53,12 @@ const CardStyled = styled.article`
     display: flex;
     align-items: flex-start;
     width: 100%;
-    gap: 2.4rem;
+    justify-content: space-between;
+
+    &__data {
+      display: flex;
+      gap: 2.5rem;
+    }
   }
 
   .event {

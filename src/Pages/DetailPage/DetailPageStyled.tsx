@@ -7,6 +7,10 @@ const DetailPageStyled = styled.div`
   font-family: ${(props) => props.theme.fonts.secondary};
   width: 100%;
   height: 100%;
+
+  .detail-page {
+    min-height: 100vh;
+  }
 `;
 
 export default DetailPageStyled;
