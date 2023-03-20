@@ -12,6 +12,7 @@ export interface EventDataStructure extends EventCreateStructure {
 }
 export interface EventsData {
   events: EventsDataStructure;
+  event: EventDataStructure;
 }
 
 export type EventsDataStructure = EventDataStructure[];

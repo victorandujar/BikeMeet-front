@@ -10,7 +10,19 @@ describe("Given a CardList component", () => {
 
       renderRouterWithProviders(
         {
-          event: { events: mockEvents.events },
+          events: {
+            events: mockEvents.events,
+            event: {
+              date: "",
+              description: "",
+              distance: "",
+              id: "",
+              image: "",
+              name: "",
+              postedBy: "",
+              type: "",
+            },
+          },
         },
         <CardList />
       );

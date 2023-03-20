@@ -2,14 +2,13 @@ import { EventDataStructure } from "../../types/events/types";
 import {
   faPersonBiking,
   faRoad,
-  faCircleInfo,
   faPenToSquare,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CardStyled from "./CardStyled";
 import { useAppSelector } from "../../store/hooks";
 import RemoveButton from "../RemoveButton/RemoveButton";
-import { Link } from "react-router-dom";
+import DetailButton from "../DetailButton/DetailButton";
 
 interface CardProps {
   event: EventDataStructure;
@@ -17,6 +16,7 @@ interface CardProps {
 
 const Card = ({ event }: CardProps): JSX.Element => {
   const localDateFormat = event.date.toLocaleString().split("T")[0];
+
   const { id } = useAppSelector((state) => state.user);
   const isMySpace = event.postedBy === id;
 
@@ -32,9 +32,7 @@ const Card = ({ event }: CardProps): JSX.Element => {
       <div className="card__data data">
         <div className="data__detail">
           <span className="data__date">{localDateFormat}</span>
-          <Link to={`/detail`}>
-            <FontAwesomeIcon icon={faCircleInfo} className="data__icon" />
-          </Link>
+          <DetailButton event={event} />
         </div>
         <h2 className="data__title">{event.name}</h2>
         <div className="data__info info">
