@@ -65,7 +65,10 @@ const LoginForm = (): JSX.Element => {
       </div>
       <ButtonForm text={"Log in"} isDisabled={areFieldsEmpty} />
       <div className="link">
-        Not a member? <Link to="/sign-up">Sign up</Link>
+        Not a member?{" "}
+        <Link to="/sign-up" className="link__text">
+          Sign up
+        </Link>
       </div>
     </LoginFormStyled>
   );
