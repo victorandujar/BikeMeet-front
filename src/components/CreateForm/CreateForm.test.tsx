@@ -97,7 +97,6 @@ describe("Given a CreateForm componente", () => {
         async () =>
           await userEvent.type(nameInputPlaceholder, mockEventCreate.name)
       );
-
       await act(
         async () =>
           await userEvent.type(
@@ -105,9 +104,7 @@ describe("Given a CreateForm componente", () => {
             mockEventCreate.distance
           )
       );
-
       await act(async () => await userEvent.click(dateInputPlaceholder));
-
       await act(
         async () =>
           await userEvent.type(
@@ -115,7 +112,6 @@ describe("Given a CreateForm componente", () => {
             mockEventCreate.date.toString()
           )
       );
-
       await act(
         async () =>
           await userEvent.selectOptions(
@@ -123,7 +119,6 @@ describe("Given a CreateForm componente", () => {
             mockEventCreate.type
           )
       );
-
       await act(
         async () =>
           await userEvent.type(
@@ -131,11 +126,11 @@ describe("Given a CreateForm componente", () => {
             mockEventCreate.description
           )
       );
-
       await act(async () => await userEvent.click(imageInputPlaceholder));
       await act(
         async () => await userEvent.upload(imageInputPlaceholder, picture)
       );
+
       await act(async () => await userEvent.click(submitButton));
 
       expect(mockCreateEventFunction).toHaveBeenCalled();
