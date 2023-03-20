@@ -11,7 +11,7 @@ const endpoints: Routes = {
   register: "/sign-up",
   mySpace: "/my-space",
   create: "/create",
-  detail: "/detail",
+  detail: "/detail/:id",
 };
 
 export default endpoints;
