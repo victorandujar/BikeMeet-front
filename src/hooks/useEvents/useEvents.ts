@@ -139,42 +139,39 @@ const useEvents = () => {
     [dispatch, token]
   );
 
-  const createEvent = useCallback(
-    async (event: EventCreateStructure) => {
-      try {
-        dispatch(setIsLoadingActionCreator());
-        const data = formData(event);
+  const createEvent = async (event: EventCreateStructure) => {
+    try {
+      dispatch(setIsLoadingActionCreator());
+      const data = formData(event);
 
-        await fetch(`${apiUrl}${pathEvents}${createEventEndpoint}`, {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-          body: data,
-        });
+      await fetch(`${apiUrl}${pathEvents}${createEventEndpoint}`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: data,
+      });
 
-        dispatch(unsetIsLoadingActionCreator());
-        dispatch(
-          openModalActionCreator({
-            isError: false,
-            isSuccess: true,
-            message: "The event has been created!",
-          })
-        );
-        navigate("/my-space");
-      } catch (error) {
-        dispatch(unsetIsLoadingActionCreator());
-        dispatch(
-          openModalActionCreator({
-            isError: true,
-            isSuccess: false,
-            message: "The event couldn't be created.",
-          })
-        );
-      }
-    },
-    [dispatch, navigate, token]
-  );
+      dispatch(unsetIsLoadingActionCreator());
+      dispatch(
+        openModalActionCreator({
+          isError: false,
+          isSuccess: true,
+          message: "The event has been created!",
+        })
+      );
+      navigate("/my-space");
+    } catch (error) {
+      dispatch(unsetIsLoadingActionCreator());
+      dispatch(
+        openModalActionCreator({
+          isError: true,
+          isSuccess: false,
+          message: "The event couldn't be created.",
+        })
+      );
+    }
+  };
 
   const findEventById = useCallback(
     async (idEvent: string) => {

@@ -56,10 +56,10 @@ describe("Given a CreateForm componente", () => {
     test("The crateEvent function should be called", async () => {
       const eventNameInputPlaceHolderText = "Introduce an event name";
       const distanceInputPlaceholderText = "Km";
-      const typeSelectPlaceHolderText = "Surface";
-      const dateInputPlaceHolderText = "Enter a valid date";
+      const typeSelectAriaLabelText = "type";
+      const dateInputAriaLabelText = "Event date";
       const descriptionTextAreaPlaceHolderText = "Add a description";
-      const imageInputPlaceHolderText = "Add an image";
+      const imageInputAriaLabelText = "picture";
 
       const picture = new File(["event"], "event.jpg", {
         type: "image/jpg",
@@ -75,20 +75,20 @@ describe("Given a CreateForm componente", () => {
         distanceInputPlaceholderText
       );
 
-      const typeInputPlaceholder = screen.getByPlaceholderText(
-        typeSelectPlaceHolderText
+      const typeInputPlaceholder = screen.getByLabelText(
+        typeSelectAriaLabelText
       );
 
-      const dateInputPlaceholder = screen.getByPlaceholderText(
-        dateInputPlaceHolderText
+      const dateInputPlaceholder = screen.getByLabelText(
+        dateInputAriaLabelText
       );
 
       const decriptionInputPlaceholder = screen.getByPlaceholderText(
         descriptionTextAreaPlaceHolderText
       );
 
-      const imageInputPlaceholder = screen.getByPlaceholderText(
-        imageInputPlaceHolderText
+      const imageInputPlaceholder = screen.getByLabelText(
+        imageInputAriaLabelText
       );
 
       const submitButton = screen.getByRole("button");

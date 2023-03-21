@@ -103,7 +103,7 @@ const CreateForm = (): JSX.Element => {
           </label>
           <select
             id="surface"
-            placeholder="Surface"
+            aria-label="type"
             className="col2__data"
             onChange={handleType}
           >
@@ -121,7 +121,7 @@ const CreateForm = (): JSX.Element => {
         </label>
         <input
           type="date"
-          placeholder="Enter a valid date"
+          aria-label="Event date"
           id="date"
           className="field__data date"
           onChange={handleDate}
@@ -148,11 +148,10 @@ const CreateForm = (): JSX.Element => {
         </label>
         <input
           type="file"
-          aria-label="image"
+          aria-label="picture"
           id="image"
           className="field__data file"
           onChange={handleImage}
-          placeholder="Add an image"
         />
       </div>
       <ButtonForm isDisabled={false} text={"create event"} />
