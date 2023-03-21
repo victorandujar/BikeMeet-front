@@ -8,6 +8,7 @@ const PrivatePage = (): JSX.Element => {
   const { getUserEvents } = useEvents();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     getUserEvents();
   }, [getUserEvents]);
 
