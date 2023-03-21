@@ -1,4 +1,4 @@
-import { screen } from "@testing-library/react";
+import { screen, waitFor } from "@testing-library/react";
 import { renderRouterWithProviders } from "../../testUtils/renderWithProviders";
 import { UserState } from "../../types/users/types";
 import LoginPage from "./LoginPage";
@@ -12,26 +12,33 @@ jest.mock("react-router-dom", () => ({
 
 describe("Given a Login page", () => {
   describe("When it is rendered", () => {
-    test("Then it should show a heading with the text 'Log in'", () => {
+    test("Then it should show a heading with the text 'Log in'", async () => {
       const headingText = "Log in";
-
+      let expectedHeading;
       renderRouterWithProviders({}, <LoginPage />);
 
-      const expectedHeading = screen.getByRole("heading", {
-        name: headingText,
-      });
+      await waitFor(
+        () =>
+          (expectedHeading = screen.getByRole("heading", {
+            name: headingText,
+          }))
+      );
 
       expect(expectedHeading).toBeInTheDocument();
     });
 
-    test("Then it should show a button with the text 'LOG IN'", () => {
+    test("Then it should show a button with the text 'LOG IN'", async () => {
       const buttonText = "Log in";
+      let expectedButton;
 
       renderRouterWithProviders({}, <LoginPage />);
 
-      const expectedButton = screen.getByRole("button", {
-        name: buttonText,
-      });
+      await waitFor(
+        () =>
+          (expectedButton = screen.getByRole("button", {
+            name: buttonText,
+          }))
+      );
 
       expect(expectedButton).toBeInTheDocument();
     });

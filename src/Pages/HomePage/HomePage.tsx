@@ -1,7 +1,8 @@
 import { useEffect } from "react";
-import CardList from "../../components/CardList/CardList";
 import useEvents from "../../hooks/useEvents/useEvents";
-import HomePageStyled from "./HomePageStyled";
+import React, { Suspense } from "react";
+const CardList = React.lazy(() => import("../../components/CardList/CardList"));
+const HomePageStyled = React.lazy(() => import("./HomePageStyled"));
 
 const HomePage = (): JSX.Element => {
   const { getEvents } = useEvents();
@@ -11,12 +12,14 @@ const HomePage = (): JSX.Element => {
   }, [getEvents]);
 
   return (
-    <HomePageStyled className="home-page">
-      <header className="home-page__header">
-        <h2>Home</h2>
-      </header>
-      <CardList />
-    </HomePageStyled>
+    <Suspense>
+      <HomePageStyled className="home-page">
+        <header className="home-page__header">
+          <h2>Home</h2>
+        </header>
+        <CardList />
+      </HomePageStyled>
+    </Suspense>
   );
 };
 

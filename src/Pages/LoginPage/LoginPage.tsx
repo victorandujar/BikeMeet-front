@@ -1,7 +1,10 @@
-import LoginForm from "../../components/LoginForm/LoginForm";
-import LoginPageStyled from "./LoginPageStyled";
 import { useAppSelector } from "../../store/hooks";
 import { Navigate } from "react-router-dom";
+import React, { Suspense } from "react";
+const LoginForm = React.lazy(
+  () => import("../../components/LoginForm/LoginForm")
+);
+const LoginPageStyled = React.lazy(() => import("./LoginPageStyled"));
 
 const LoginPage = (): JSX.Element => {
   const { isLogged } = useAppSelector((state) => state.user);
@@ -9,12 +12,14 @@ const LoginPage = (): JSX.Element => {
   return isLogged ? (
     <Navigate to={"/"} replace={true} />
   ) : (
-    <LoginPageStyled>
-      <header className="login-page">
-        <h1 className="login-page__title">Log in</h1>
-      </header>
-      <LoginForm />
-    </LoginPageStyled>
+    <Suspense>
+      <LoginPageStyled>
+        <header className="login-page">
+          <h1 className="login-page__title">Log in</h1>
+        </header>
+        <LoginForm />
+      </LoginPageStyled>
+    </Suspense>
   );
 };
 

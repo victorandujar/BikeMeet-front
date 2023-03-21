@@ -1,15 +1,19 @@
-import { screen } from "@testing-library/react";
+import { screen, waitFor } from "@testing-library/react";
 import { renderRouterWithProviders } from "../../testUtils/renderWithProviders";
 import RegisterPage from "./RegisterPage";
 
 describe("Given a RegisterPage component", () => {
   describe("When it is rendered", () => {
-    test("Then it should show a header with the text 'Sign up'", () => {
+    test("Then it should show a header with the text 'Sign up'", async () => {
       const headertext = "Sign up";
+      let expectedHeader;
 
       renderRouterWithProviders({}, <RegisterPage />);
 
-      const expectedHeader = screen.getByRole("heading", { name: headertext });
+      await waitFor(
+        () =>
+          (expectedHeader = screen.getByRole("heading", { name: headertext }))
+      );
 
       expect(expectedHeader).toBeInTheDocument();
     });
