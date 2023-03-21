@@ -8,6 +8,7 @@ const HomePage = (): JSX.Element => {
   const { getEvents } = useEvents();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     getEvents();
   }, [getEvents]);
 
