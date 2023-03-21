@@ -25,9 +25,10 @@ const Card = ({ event }: CardProps): JSX.Element => {
       <img
         src={event.image.toString()}
         alt={event.name}
-        width={105}
-        height={110}
+        width={300}
+        height={200}
         className="card__image"
+        loading="lazy"
       />
       <div className="card__data data">
         <div className="data__detail">

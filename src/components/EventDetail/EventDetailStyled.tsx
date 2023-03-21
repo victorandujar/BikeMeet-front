@@ -53,6 +53,18 @@ const EventDetailStyled = styled.article`
     font-family: ${(props) => props.theme.fonts.secondary};
     letter-spacing: 2px;
   }
+
+  .background {
+    &__icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 15px;
+      background-color: #e3e3e3;
+    }
+  }
 `;
 
 export default EventDetailStyled;
