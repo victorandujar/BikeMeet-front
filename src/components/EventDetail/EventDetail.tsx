@@ -28,11 +28,13 @@ const EventDetail = ({ event }: DetailProps): JSX.Element => {
       />
       <h2 className="event-detail__title">{event.name}</h2>
       <div className="event-detail__info info">
-        <div className="info__details">
-          <FontAwesomeIcon
-            icon={faCalendarDays}
-            className="info__icon calendar"
-          />
+        <div className="info__details ">
+          <div className="background__icon">
+            <FontAwesomeIcon
+              icon={faCalendarDays}
+              className="info__icon calendar"
+            />
+          </div>
           <span className="info__data date">{localDateFormat}</span>
         </div>
         <div className="info__event">
