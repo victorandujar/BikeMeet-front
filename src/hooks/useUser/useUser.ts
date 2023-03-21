@@ -73,6 +73,7 @@ const useUser = () => {
 
   const registerUser = async (registerUserData: UserRegisterData) => {
     try {
+      dispatch(setIsLoadingActionCreator());
       const response = await fetch(
         `${apiUrl}${usersEndPoint}${registerEndPoint}`,
         {
@@ -93,7 +94,7 @@ const useUser = () => {
           isSuccess: true,
         })
       );
-
+      dispatch(unsetIsLoadingActionCreator());
       navigate("/login");
     } catch (error) {
       dispatch(
