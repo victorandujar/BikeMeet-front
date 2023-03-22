@@ -143,7 +143,6 @@ const useEvents = () => {
     try {
       dispatch(setIsLoadingActionCreator());
       const data = formData(event);
-
       await fetch(`${apiUrl}${pathEvents}${createEventEndpoint}`, {
         method: "POST",
         headers: {
