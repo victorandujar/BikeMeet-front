@@ -49,4 +49,4 @@ BikeMeet uses Jest and React Testing Library for unit and integration tests. To 
 
 ### Deployment
 
-To deploy BikeMeet to a production environment, run the npm run build command to build a production-ready version of the app. This will generate a build directory containing the compiled code, which you can then serve using a static file server. You can also deploy the app to a cloud platform such as Heroku or Netlify.
+To deploy BikeMeet to a production environment, run the npm run build command to build a production-ready version of the app. This will generate a build directory containing the compiled code, which you can then serve using a static file server. You can also deploy the app to a cloud platform such as Vercel or Netlify.
