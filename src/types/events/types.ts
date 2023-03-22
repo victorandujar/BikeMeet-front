@@ -2,7 +2,7 @@ export interface EventCreateStructure {
   name: string;
   distance: string;
   type: string;
-  date: Date | string;
+  date: string;
   description: string;
   image: File | string;
 }

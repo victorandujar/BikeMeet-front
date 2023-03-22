@@ -1,8 +1,7 @@
 import { useEffect } from "react";
+import CardList from "../../components/CardList/CardList";
 import useEvents from "../../hooks/useEvents/useEvents";
-import React, { Suspense } from "react";
-const CardList = React.lazy(() => import("../../components/CardList/CardList"));
-const PrivatePageStyled = React.lazy(() => import("./PrivatePageStyled"));
+import PrivatePageStyled from "./PrivatePageStyled";
 
 const PrivatePage = (): JSX.Element => {
   const { getUserEvents } = useEvents();
@@ -13,14 +12,12 @@ const PrivatePage = (): JSX.Element => {
   }, [getUserEvents]);
 
   return (
-    <Suspense>
-      <PrivatePageStyled className="private-page">
-        <header className="private-page__header">
-          <h2>My Events</h2>
-        </header>
-        <CardList />
-      </PrivatePageStyled>
-    </Suspense>
+    <PrivatePageStyled className="private-page">
+      <header className="private-page__header">
+        <h2>My Events</h2>
+      </header>
+      <CardList />
+    </PrivatePageStyled>
   );
 };
 

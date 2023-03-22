@@ -1,7 +1,6 @@
 import { renderHook } from "@testing-library/react";
 import { errorHandlers } from "../../mocks/handlers";
 import {
-  getMockNewEvent,
   mockEventCreate,
   mockEventMussara,
   mockListEvents,
@@ -19,7 +18,6 @@ import {
   unsetIsLoadingActionCreator,
 } from "../../store/features/uiSlice/uiSlice";
 import { store } from "../../store/store";
-import { EventDataStructure } from "../../types/events/types";
 import useEvents from "./useEvents";
 import "react-router-dom";
 
@@ -195,48 +193,6 @@ describe("Given a useEvents custom hook and a deleteEvent function", () => {
   });
 });
 
-describe("Given a useEvents custom hook and the createEvent function", () => {
-  describe("When the createEvent function is called", () => {
-    test("Then it should call the openModal action creator", async () => {
-      const {
-        result: {
-          current: { createEvent },
-        },
-      } = renderHook(() => useEvents(), { wrapper: Wrapper });
-
-      const newEvent = getMockNewEvent();
-
-      await createEvent(newEvent as unknown as EventDataStructure);
-
-      expect(spyDispatch).toHaveBeenCalledWith(unsetIsLoadingActionCreator());
-    });
-  });
-
-  describe("When the response respond with an error", () => {
-    beforeEach(() => {
-      server.resetHandlers(...errorHandlers);
-    });
-
-    test("Then it should call the openModalActionCreator", async () => {
-      const {
-        result: {
-          current: { createEvent },
-        },
-      } = renderHook(() => useEvents(), { wrapper: Wrapper });
-
-      await createEvent(mockEventCreate);
-
-      expect(spyDispatch).toHaveBeenCalledWith(
-        openModalActionCreator({
-          isError: true,
-          isSuccess: false,
-          message: "The event couldn't be created.",
-        })
-      );
-    });
-  });
-});
-
 describe("Given a useEvents hook and the findEventById function", () => {
   describe("When the findEventById is called", () => {
     test("Then it should call the loadEvent dispatch", async () => {
@@ -274,6 +230,66 @@ describe("Given a useEvents hook and the findEventById function", () => {
           isError: true,
           isSuccess: false,
           message: "No event found to show.",
+        })
+      );
+    });
+  });
+});
+
+describe("Given a useEvents custom hook and the createEvent function", () => {
+  describe("When the createEvent function is called", () => {
+    test("Then it should call the openModal action creator", async () => {
+      global.fetch = jest.fn(() =>
+        Promise.resolve({
+          json: () => Promise.resolve({ event: mockEventCreate }),
+        })
+      ) as jest.Mock;
+
+      const {
+        result: {
+          current: { createEvent },
+        },
+      } = renderHook(() => useEvents(), { wrapper: Wrapper });
+
+      await createEvent(mockEventCreate);
+
+      expect(spyDispatch).toHaveBeenNthCalledWith(
+        2,
+        unsetIsLoadingActionCreator()
+      );
+      expect(spyDispatch).toHaveBeenNthCalledWith(
+        3,
+        openModalActionCreator({
+          isError: false,
+          isSuccess: true,
+          message: "The event has been created!",
+        })
+      );
+    });
+  });
+
+  describe("When the response respond with an error", () => {
+    test("Then it should call the openModalActionCreator", async () => {
+      global.fetch = jest.fn(() =>
+        Promise.reject({
+          json: () => Promise.reject(),
+        })
+      ) as jest.Mock;
+
+      const {
+        result: {
+          current: { createEvent },
+        },
+      } = renderHook(() => useEvents(), { wrapper: Wrapper });
+
+      await createEvent(mockEventCreate);
+
+      expect(spyDispatch).toHaveBeenNthCalledWith(
+        3,
+        openModalActionCreator({
+          isError: true,
+          isSuccess: false,
+          message: "The event couldn't be created.",
         })
       );
     });

@@ -5,7 +5,6 @@ import {
   EventsDataStructure,
 } from "../types/events/types";
 import { UiState } from "../types/ui/types";
-import FormDataPolyfill from "form-data";
 
 export const mockEventSaCosta: EventDataStructure = {
   name: "Sa costa",
@@ -85,15 +84,4 @@ export const preloadedStateLoggedIn = {
     isLogged: true,
     token: "",
   },
-};
-
-export const getMockNewEvent = (): FormDataPolyfill => {
-  const data = new FormDataPolyfill();
-  data.append("name", mockEventCreate.name);
-  data.append("distance", mockEventCreate.distance);
-  data.append("type", mockEventCreate.type);
-  data.append("date", mockEventCreate.date.toLocaleString());
-  data.append("description", mockEventCreate.description);
-  data.append("image", mockEventCreate.image);
-  return data;
 };
