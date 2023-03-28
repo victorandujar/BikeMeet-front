@@ -37,11 +37,11 @@ Once you have these tools installed, you can clone the BikeMeet repository and i
 
 ### Copy code
 
-git clone https://github.com/your-username/bikemeet.git
-cd bikemeet
-npm install
+- git clone https://github.com/your-username/bikemeet.git
+- cd bikemeet
+- npm install
 
-After the dependencies have been installed, you can start the development server by running npm start and visiting http://localhost:4000/ in your web browser.
+After the dependencies have been installed, you can start the development server by running npm start and visiting http://localhost:3000/ in your web browser.
 
 ### Running Tests
 
